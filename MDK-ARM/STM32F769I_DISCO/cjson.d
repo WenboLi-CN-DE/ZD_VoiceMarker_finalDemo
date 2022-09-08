@@ -1,0 +1,10 @@
+stm32f769i_disco\cjson.o: ..\Middlewares\Third_Party\cJson\cJSON.c
+stm32f769i_disco\cjson.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+stm32f769i_disco\cjson.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+stm32f769i_disco\cjson.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+stm32f769i_disco\cjson.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+stm32f769i_disco\cjson.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\limits.h
+stm32f769i_disco\cjson.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\ctype.h
+stm32f769i_disco\cjson.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\float.h
+stm32f769i_disco\cjson.o: ..\Middlewares\Third_Party\cJson\cJSON.h
+stm32f769i_disco\cjson.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h

@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextDatabase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="texts.xsd" Version="4.20.0">
+  <Languages>
+    <Language Id="GB" />
+  </Languages>
+  <Texts>
+    <TextGroup Id="Group1" />
+    <TextGroup Id="Unsorted">
+      <Text Id="__SingleUse_D2BQ" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Camera</Translation>
+      </Text>
+      <Text Id="__SingleUse_BDXJ" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Setting</Translation>
+      </Text>
+      <Text Id="__SingleUse_87JM" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Network</Translation>
+      </Text>
+      <Text Id="__SingleUse_W14W" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Working Mode</Translation>
+      </Text>
+      <Text Id="__SingleUse_S10U" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Bus Load</Translation>
+      </Text>
+      <Text Id="__SingleUse_16RK" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Infomation</Translation>
+      </Text>
+      <Text Id="__SingleUse_APA3" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">SSD 2 Storage:</Translation>
+      </Text>
+      <Text Id="__SingleUse_4N89" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">SSD 1 Storage:</Translation>
+      </Text>
+      <Text Id="__SingleUse_GOH1" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">SSD 2 State:</Translation>
+      </Text>
+      <Text Id="__SingleUse_KJ95" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">SSD 1 State:</Translation>
+      </Text>
+      <Text Id="__SingleUse_4RGK" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Working Time:</Translation>
+      </Text>
+      <Text Id="__SingleUse_W333" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Working State:</Translation>
+      </Text>
+      <Text Id="__SingleUse_4OFT" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Time: &lt;s&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_YLT5" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">CPU: &lt;s&gt;%</Translation>
+      </Text>
+      <Text Id="__SingleUse_S0L5" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Zone:</Translation>
+      </Text>
+      <Text Id="__SingleUse_4IO7" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Memory: &lt;s&gt;%</Translation>
+      </Text>
+      <Text Id="__SingleUse_P20E" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Diskload:&lt;s&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_81KR" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Disk: &lt;s&gt;%</Translation>
+      </Text>
+      <Text Id="__SingleUse_WCWV" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Seires Number:</Translation>
+      </Text>
+      <Text Id="__SingleUse_LD7H" Alignment="Left" TypographyId="Large">
+        <Translation Language="GB">TriggerInfo 1</Translation>
+      </Text>
+      <Text Id="__SingleUse_0KJO" Alignment="Left" TypographyId="Large">
+        <Translation Language="GB">TriggerInfo 1</Translation>
+      </Text>
+      <Text Id="__SingleUse_1296" Alignment="Left" TypographyId="Large">
+        <Translation Language="GB">TriggerInfo 1</Translation>
+      </Text>
+      <Text Id="__SingleUse_N5Z4" Alignment="Left" TypographyId="Large">
+        <Translation Language="GB">TriggerInfo 1</Translation>
+      </Text>
+      <Text Id="__SingleUse_V652" Alignment="Left" TypographyId="Large">
+        <Translation Language="GB">TriggerInfo 1</Translation>
+      </Text>
+      <Text Id="__SingleUse_7XFF" Alignment="Left" TypographyId="Large">
+        <Translation Language="GB">TriggerInfo 1</Translation>
+      </Text>
+      <Text Id="__SingleUse_W89Y" Alignment="Left" TypographyId="Large">
+        <Translation Language="GB">TriggerInfo 1</Translation>
+      </Text>
+      <Text Id="__SingleUse_0H3Y" Alignment="Left" TypographyId="Large">
+        <Translation Language="GB">TriggerInfo 1</Translation>
+      </Text>
+      <Text Id="__SingleUse_MU1K" Alignment="Left" TypographyId="Large">
+        <Translation Language="GB">TriggerInfo 1</Translation>
+      </Text>
+      <Text Id="__SingleUse_JLBO" Alignment="Left" TypographyId="Large">
+        <Translation Language="GB">TriggerInfo 1</Translation>
+      </Text>
+      <Text Id="__SingleUse_8CTU" Alignment="Left" TypographyId="Large">
+        <Translation Language="GB">VoiceFile_&lt;s&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_T1CV" Alignment="Left" TypographyId="Large">
+        <Translation Language="GB">VoiceFile_&lt;s&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_CXYN" Alignment="Left" TypographyId="Large">
+        <Translation Language="GB">VoiceFile_&lt;s&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_1H3J" Alignment="Left" TypographyId="Large">
+        <Translation Language="GB">VoiceFile_&lt;s&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_ZNSJ" Alignment="Left" TypographyId="Large">
+        <Translation Language="GB">VoiceFile_&lt;s&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_9J5S" Alignment="Left" TypographyId="Large">
+        <Translation Language="GB">VoiceFile_&lt;s&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_V3O8" Alignment="Left" TypographyId="Large">
+        <Translation Language="GB">VoiceFile _&lt;s&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_QBJI" Alignment="Left" TypographyId="Large">
+        <Translation Language="GB">VoiceFile_&lt;s&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_NOG7" Alignment="Left" TypographyId="Large">
+        <Translation Language="GB">VoiceFile_&lt;s&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_EUMY" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Time:</Translation>
+      </Text>
+      <Text Id="__SingleUse_X61W" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">File:</Translation>
+      </Text>
+      <Text Id="__SingleUse_MPKR" Alignment="Left" TypographyId="Large">
+        <Translation Language="GB">VoiceFile_&lt;s&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_IX3D" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Trigger</Translation>
+      </Text>
+      <Text Id="__SingleUse_GEK5" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Vocie Marker</Translation>
+      </Text>
+      <Text Id="__SingleUse_HUKM" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">Ftp Put</Translation>
+      </Text>
+      <Text Id="__SingleUse_5J49" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">Ftp Get</Translation>
+      </Text>
+      <Text Id="__SingleUse_DXUC" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">Tftp Put</Translation>
+      </Text>
+      <Text Id="__SingleUse_0EBA" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">HTTP Post</Translation>
+      </Text>
+      <Text Id="__SingleUse_RGZK" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">Tftp Get</Translation>
+      </Text>
+      <Text Id="__SingleUse_JX21" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">HTTP Get</Translation>
+      </Text>
+      <Text Id="__SingleUse_D4EC" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">Start Monitor</Translation>
+      </Text>
+      <Text Id="__SingleUse_TRAK" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">back to Home Page</Translation>
+      </Text>
+      <Text Id="__SingleUse_C1H4" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_61KP" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_S6TU" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_HD8U" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">zone:  &lt;s&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_VDNS" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">time: &lt;s&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_9R4G" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">mem: &lt;s&gt;%</Translation>
+      </Text>
+      <Text Id="__SingleUse_3WIT" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">diskload:  &lt;s&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_MHOT" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">disk: &lt;s&gt;%</Translation>
+      </Text>
+      <Text Id="__SingleUse_9QBO" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">cpu: &lt;s&gt;%</Translation>
+      </Text>
+      <Text Id="__SingleUse_XWOB" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">70</Translation>
+      </Text>
+      <Text Id="__SingleUse_6ZTA" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">&lt;d&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_M9PG" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_6JEU" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_UBE2" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_PF3L" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">FileSize:   &lt;d&gt;  KB</Translation>
+      </Text>
+      <Text Id="__SingleUse_WY29" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_IW1T" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Sample rate:  &lt;d&gt; Hz</Translation>
+      </Text>
+      <Text Id="__SingleUse_G8F8" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">time:  &lt;d&gt;:&lt;d&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_C6M9" Alignment="Left" TypographyId="Large">
+        <Translation Language="GB">VoiceMarker Application</Translation>
+      </Text>
+    </TextGroup>
+  </Texts>
+  <Typographies>
+    <Typography Id="Default" Font="consola.ttf" Size="20" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="-,.,+,/,\" WildcardCharacterRanges="0-9,a-z,A-Z" />
+    <Typography Id="Large" Font="arial.ttf" Size="30" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacters="-,.,+,/,\" WildcardCharacterRanges="0-9,a-z,A-Z" />
+    <Typography Id="Small" Font="verdana.ttf" Size="10" Bpp="4" Direction="LTR" FallbackCharacter="?" WildcardCharacterRanges="0-9,a-z,A-Z" />
+  </Typographies>
+</TextDatabase>

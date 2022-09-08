@@ -1,0 +1,2 @@
+stm32f769i_disco\image_blue_slider_vertical_medium_slider3_vertical_round_fill.o: ../touchgfx/generated/images/src/__designer/image_blue_slider_vertical_medium_slider3_vertical_round_fill.cpp
+stm32f769i_disco\image_blue_slider_vertical_medium_slider3_vertical_round_fill.o: ../middlewares/st/touchgfx/framework/include/touchgfx/hal/Config.hpp
