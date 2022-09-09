@@ -22,8 +22,6 @@
 #include "waveplayer.h"
 #include "waverecorder.h"	
 #include "string.h"
-
-
 #include "core/net.h"
 #include "drivers/mac/stm32f7xx_eth_driver.h"
 #include "drivers/phy/lan8742_driver.h"
@@ -33,16 +31,12 @@
 #include "debug.h"
 #include "cJSON.h" 
 #include "JsonParser.h" 
-
-#include "tftp/tftp_client.h"
-#include "tftp/tftp_client_misc.h"
 #include "ftp/ftp_client.h"
-
 #include "User_Button_LED.h"
-
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
+typedef StaticTask_t osStaticThreadDef_t;
 /* USER CODE BEGIN PTD */
 //Ethernet interface configuration
 #define APP_IF_NAME "eth0"
@@ -66,44 +60,28 @@
 #define APP_IPV6_SECONDARY_DNS "2001:4860:4860::8844"
 
 //Application configuration
-
-//#define APP_HTTP_NAME "192.168.1.50" 
 #define APP_HTTP_SERVER_NAME "192.168.1.145" //datalogger server地址
-//#define APP_HTTP_SERVER_NAME "192.168.2.121" //PC ip
 #define APP_HTTP_URI "/api/dashboard/usage"
-#define APP_HTTP_URI_GRTFILE "/download?file=node.txt"
-#define APP_HTTP_URI_POSTFILE "upload"
-//#define APP_HTTP_URI " /download/hello.txt"
 #define APP_HTTP_SERVER_PORT 8180 //
-#define APP_HTTP_SERVER_PORT_GETFILE 1234 //
-
-#define APP_TFTP_SERVER_NAME "192.168.1.50"
-#define APP_TFTP_SERVER_PORT 69
-#define APP_TFTP_FILENAME "test.txt"
-
 
 //Application configuration
 #define APP_FTP_SERVER_NAME "192.168.1.145"
-//#define APP_FTP_SERVER_NAME "192.168.2.121"
 #define APP_FTP_SERVER_PORT 21
 #define APP_FTP_LOGIN "ftp_testuser"
 #define APP_FTP_PASSWORD "03160316"
 #define APP_FTP_FILENAME "Wave.wav"
-
 
 DhcpClientSettings dhcpClientSettings;
 DhcpClientContext dhcpClientContext;
 SlaacSettings slaacSettings;
 SlaacContext slaacContext;
 HttpClientContext httpClientContext;
-TftpClientContext tftpClientContext;
 FtpClientContext ftpClientContext;
 
-error_t httpClientTest(void);
-void userTask(void *param);
-char_t buffer_http[128]; //used to receive HTTP packets
+error_t httpClientTest(char* uri_request);
 
-uint8_t flag = 0;
+char_t buffer_http[128]; //used to receive HTTP packets
+uint8_t flag = 0;//key flag
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -189,10 +167,15 @@ const osThreadAttr_t videoTask_attributes = {
 };
 /* Definitions for tftpTask */
 osThreadId_t tftpTaskHandle;
+uint32_t tftpTaskBuffer[ 2048 ];
+osStaticThreadDef_t tftpTaskControlBlock;
 const osThreadAttr_t tftpTask_attributes = {
   .name = "tftpTask",
-  .stack_size = 2048 * 4,
-  .priority = (osPriority_t) osPriorityHigh,
+  .cb_mem = &tftpTaskControlBlock,
+  .cb_size = sizeof(tftpTaskControlBlock),
+  .stack_mem = &tftpTaskBuffer[0],
+  .stack_size = sizeof(tftpTaskBuffer),
+  .priority = (osPriority_t) osPriorityNormal,
 };
 /* Definitions for TriggerTask */
 osThreadId_t TriggerTaskHandle;
@@ -289,8 +272,6 @@ int main(void)
 	#if (APP_USE_SLAAC == DISABLED)
 		 Ipv6Addr ipv6Addr;
 	#endif
-	
-
   /* USER CODE END 1 */
 
   /* MPU Configuration--------------------------------------------------------*/
@@ -326,9 +307,6 @@ int main(void)
   /* USER CODE BEGIN SysInit */
 	BSP_LED_Init(LED1);
 	AUDIO_InitApplication();
-//	User_LED_Init(USER_LED_RED);
-//	User_LED_Init(USER_LED_GREEN);
-//	User_LED_Init(USER_LED_BLUE);
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -348,14 +326,10 @@ int main(void)
   MX_DMA_Init();
   MX_TouchGFX_Init();
   /* USER CODE BEGIN 2 */
-//	User_PB_Init(USER_BUTTON_S1,USER_BUTTON_MODE_EXTI);
-//	User_PB_Init(USER_BUTTON_S2,USER_BUTTON_MODE_EXTI);
-//	User_PB_Init(USER_BUTTON_S3,USER_BUTTON_MODE_EXTI);
 	if((FATFS_LinkDriver(&SDRAMDISK_Driver, RAMpath) == 0))
   {  
     /*##-2- Register the file system object to the FatFs  module*/
     res1 = f_mount(&RAMFatFs, (TCHAR const*)RAMpath, 0);    
-//		BSP_LED_On(LED1);
     if((res1 != FR_OK))
     {
       /* FatFs Initialization Error */
@@ -365,7 +339,6 @@ int main(void)
     {
       /*##-3- Create a FAT file system (format) on the logical drives ########*/
       res1 = f_mkfs((TCHAR const*)RAMpath, FM_ANY, 0, workBuffer, sizeof(workBuffer));
-//			BSP_LED_On(LED1);
       if((res1 != FR_OK))
       {
         /* FatFs Format Error */
@@ -379,11 +352,11 @@ int main(void)
    TRACE_INFO("*** ZD-Automotive HTTP Client Demo ***\r\n");
    TRACE_INFO("***********************************\r\n");
 	 TRACE_INFO("Product: VoiceMarker_HttpClient\r\n");
-   TRACE_INFO("Compiled: %s %s\r\n", __DATE__, __TIME__); //获取当前时间
+   TRACE_INFO("Compiled: %s %s\r\n", __DATE__, __TIME__); 
    TRACE_INFO("Target: STM32F769\r\n");
    TRACE_INFO("\r\n");
 	
-	   //TCP/IP stack initialization
+	 // TCP/IP stack initialization
    error = netInit();
    //Any error to report?
    if(error)
@@ -393,18 +366,16 @@ int main(void)
    }
 	 //Configure the first Ethernet interface
    interface = &netInterface[0];
-
-   //Set interface name 设置接口名称
+   //Set interface name
    netSetInterfaceName(interface, APP_IF_NAME);
-   //Set host name 设置主机名字
+   //Set host name
    netSetHostname(interface, APP_HOST_NAME);
-   //Set host MAC address 设置Mac地址
+   //Set host MAC address 
    macStringToAddr(APP_MAC_ADDR, &macAddr);
    netSetMacAddr(interface, &macAddr);
-   //Select the relevant network adapter 选择相关网络接头
+   //Select the relevant network adapter
    netSetDriver(interface, &stm32f7xxEthDriver);
    netSetPhyDriver(interface, &lan8742PhyDriver);
-
    //Initialize network interface
    error = netConfigInterface(interface);
    //Any error to report?
@@ -422,7 +393,6 @@ int main(void)
    dhcpClientSettings.interface = interface;
    //Disable rapid commit option
    dhcpClientSettings.rapidCommit = FALSE;
-
    //DHCP client initialization DHCP client
    error = dhcpClientInit(&dhcpClientContext, &dhcpClientSettings);
    //Failed to initialize DHCP client?
@@ -431,7 +401,6 @@ int main(void)
       //Debug message
       TRACE_ERROR("Failed to initialize DHCP client!\r\n");
    }
-
    //Start DHCP client
    error = dhcpClientStart(&dhcpClientContext);
    //Failed to start DHCP client?
@@ -509,8 +478,6 @@ int main(void)
    ipv6SetDnsServer(interface, 1, &ipv6Addr);
 #endif
 #endif
-
-
   /* USER CODE END 2 */
 
   /* Init scheduler */
@@ -2012,679 +1979,146 @@ static uint8_t BSP_QSPI_EnableMemoryMappedMode(QSPI_HandleTypeDef *hqspi)
   return QSPI_OK;
 }
 
-error_t httpClientTest(void)
-{
-	 error_t error;
-   size_t length;
-   uint_t status;
-   const char_t *value;
-   IpAddr ipAddr;
-   char_t buffer[128];
-
-	
-   //Initialize HTTP client context
-   httpClientInit(&httpClientContext);
-	 //Start of exception handling block
-   do
-   {
-      //Debug message
-      TRACE_INFO("\r\n\r\nResolving server name...\r\n");
-      //Resolve HTTP server name
-      error = getHostByName(NULL, APP_HTTP_SERVER_NAME, &ipAddr, 0);
-//			error = getHostByAddress();
-      //Any error to report?
-      if(error)
-      {
-         //Debug message
-         TRACE_INFO("Failed to resolve server name!\r\n");
-         break;
-      }
-      //Select HTTP protocol version
-      error = httpClientSetVersion(&httpClientContext, HTTP_VERSION_1_1);
-      //Any error to report?
-      if(error)
-         break;
-      //Set timeout value for blocking operations
-      error = httpClientSetTimeout(&httpClientContext, 20000);
-      //Any error to report?
-      if(error)
-         break;
-      //Debug message
-      TRACE_INFO("Connecting to HTTP server %s...\r\n",
-         ipAddrToString(&ipAddr, NULL));
-
-      //Connect to the HTTP server
-      error = httpClientConnect(&httpClientContext, &ipAddr,
-         APP_HTTP_SERVER_PORT);
-      //Any error to report?
-      if(error)
-      {
-         //Debug message
-         TRACE_INFO("Failed to connect to HTTP server!\r\n");
-         break;
-      }
-      //Create an HTTP request 
-      httpClientCreateRequest(&httpClientContext);
-      httpClientSetMethod(&httpClientContext, "GET");
-      httpClientSetUri(&httpClientContext, APP_HTTP_URI);
-
-      //Set query string
-//      httpClientAddQueryParam(&httpClientContext, "param1", "value1");
-//      httpClientAddQueryParam(&httpClientContext, "param2", "value2");
-
-      //Add HTTP header fields
-      httpClientAddHeaderField(&httpClientContext, "Host", APP_HTTP_SERVER_NAME);
-      httpClientAddHeaderField(&httpClientContext, "User-Agent", "Mozilla/5.0");
-			httpClientAddHeaderField(&httpClientContext, "Content-Type", "application/json");
-      httpClientAddHeaderField(&httpClientContext, "Transfer-Encoding", "deflate");
-
-      //Send HTTP request header
-      error = httpClientWriteHeader(&httpClientContext);
-      //Any error to report?
-      if(error)
-      {
-         //Debug message
-         TRACE_INFO("Failed to write HTTP request header!\r\n");
-         break;
-      }
-
-//      //Send HTTP request body
-//      error = httpClientWriteBody(&httpClientContext, "Hello World!", 12,
-//         NULL, 0);
-//      //Any error to report?
-//      if(error)
-//      {
-//         //Debug message
-//         TRACE_INFO("Failed to write HTTP request body!\r\n");
-//         break;
-//      }
-
-      //Receive HTTP response header
-      error = httpClientReadHeader(&httpClientContext);
-      //Any error to report?
-      if(error)
-      {
-         //Debug message
-         TRACE_INFO("Failed to read HTTP response header!\r\n");
-         break;
-      }
-
-      //Retrieve HTTP status code
-      status = httpClientGetStatus(&httpClientContext);
-      //Debug message
-      TRACE_INFO("HTTP status code: %u\r\n", status);
-
-      //Retrieve the value of the Content-Type header field
-      value = httpClientGetHeaderField(&httpClientContext, "Content-Type");
-
-      //Header field found?
-      if(value != NULL)
-      {
-         //Debug message
-         TRACE_INFO("Content-Type header field value: %s\r\n", value);
-      }
-      else
-      {
-         //Debug message
-         TRACE_INFO("Content-Type header field not found!\r\n");
-      }
-
-      //Receive HTTP response body
-      while(!error)
-      {
-         //Read data
-         error = httpClientReadBody(&httpClientContext, buffer,
-            sizeof(buffer) - 1, &length, 0);
-
-         //Check status code
-         if(!error)
-         {
-            //Properly terminate the string with a NULL character
-            buffer[length] = '\0';
-            //Dump HTTP response body
-            TRACE_INFO("%s", buffer);
-						cpuInfoParser();					 
-         }
-      }
-      //Terminate the HTTP response body with a CRLF
-      TRACE_INFO("\r\n");
-      //Any error to report?
-      if(error != ERROR_END_OF_STREAM)
-         break;
-      //Close HTTP response body
-      error = httpClientCloseBody(&httpClientContext);
-      //Any error to report?
-      if(error)
-      {
-         //Debug message
-         TRACE_INFO("Failed to read HTTP response trailer!\r\n");
-         break;
-      }
-      //Gracefully disconnect from the HTTP server
-      httpClientDisconnect(&httpClientContext);
-      //Debug message
-      TRACE_INFO("Connection closed\r\n");
-      //End of exception handling block
-   } while(0);
-   //Release HTTP client context
-   httpClientDeinit(&httpClientContext);
-
-   //Return status code
-   return error;
-	
-}
-
-error_t httpFileTrans()
-{
-   error_t error;
-   size_t length;
-   uint_t status;
-   const char_t *value;
-   IpAddr ipAddr;
-   char_t buffer[128];
-		uint32_t byteswritten = 0;
-   //Initialize HTTP client context
-   httpClientInit(&httpClientContext);
- 
-   //Start of exception handling block
-   do
-   {
-      //Debug message
-      TRACE_INFO("\r\n\r\nResolving server name...\r\n");
-
-      //Resolve HTTP server name
-      error = getHostByName(NULL, APP_HTTP_SERVER_NAME, &ipAddr, 0);
-      //Any error to report?
-      if(error)
-      {
-         //Debug message
-         TRACE_INFO("Failed to resolve server name!\r\n");
-         break;
-      }
-
-      //Select HTTP protocol version
-      error = httpClientSetVersion(&httpClientContext, HTTP_VERSION_1_1);
-      //Any error to report?
-      if(error)
-         break;
-
-      //Set timeout value for blocking operations
-      error = httpClientSetTimeout(&httpClientContext, 20000);
-      //Any error to report?
-      if(error)
-         break;
-
-      //Debug message
-      TRACE_INFO("Connecting to HTTP server %s...\r\n",
-         ipAddrToString(&ipAddr, NULL));
-
-      //Connect to the HTTP server
-      error = httpClientConnect(&httpClientContext, &ipAddr,
-         APP_HTTP_SERVER_PORT_GETFILE);
-      //Any error to report?
-      if(error)
-      {
-         //Debug message
-         TRACE_INFO("Failed to connect to HTTP server!\r\n");
-         break;
-      }
-
-      //Create an HTTP request
-      httpClientCreateRequest(&httpClientContext);
-      httpClientSetMethod(&httpClientContext, "GET");
-      httpClientSetUri(&httpClientContext, APP_HTTP_URI_GRTFILE);
-
-      //Add HTTP header fields
-      httpClientAddHeaderField(&httpClientContext, "Host", APP_HTTP_SERVER_NAME);
-      httpClientAddHeaderField(&httpClientContext, "User-Agent", "Mozilla/5.0");
-      httpClientAddHeaderField(&httpClientContext, "Content-Type", "text/plain");
-      httpClientAddHeaderField(&httpClientContext, "Transfer-Encoding", "chunked");
-
-      //Send HTTP request header
-      error = httpClientWriteHeader(&httpClientContext);
-      //Any error to report?
-      if(error)
-      {
-         //Debug message
-         TRACE_INFO("Failed to write HTTP request header!\r\n");
-         break;
-      }
-
-      //Receive HTTP response header
-      error = httpClientReadHeader(&httpClientContext);
-      //Any error to report?
-      if(error)
-      {
-         //Debug message
-         TRACE_INFO("Failed to read HTTP response header!\r\n");
-         break;
-      }
-
-      //Retrieve HTTP status code
-      status = httpClientGetStatus(&httpClientContext);
-      //Debug message
-      TRACE_INFO("HTTP status code: %u\r\n", status);
-
-      //Retrieve the value of the Content-Type header field
-      value = httpClientGetHeaderField(&httpClientContext, "Content-Type");
-
-      //Header field found?
-      if(value != NULL)
-      {
-         //Debug message
-         TRACE_INFO("Content-Type header field value: %s\r\n", value);
-      }
-      else
-      {
-         //Debug message
-         TRACE_INFO("Content-Type header field not found!\r\n");
-      }
-				
-      //Receive HTTP response body
-      while(!error)
-      {
-         //Read data
-         error = httpClientReadBody(&httpClientContext, buffer,
-            sizeof(buffer) - 1, &length, 0);				
-         //Check status code
-         if(!error)
-         {						
-            //Properly terminate the string with a NULL character
-            buffer[length] = '\0';
-            //Dump HTTP response body
-            TRACE_INFO("%s", buffer);
-         }
-      }
-      //Terminate the HTTP response body with a CRLF
-      TRACE_INFO("\r\n");
-
-      //Any error to report?
-      if(error != ERROR_END_OF_STREAM)
-         break;
-
-      //Close HTTP response body
-      error = httpClientCloseBody(&httpClientContext);
-      //Any error to report?
-      if(error)
-      {
-         //Debug message
-         TRACE_INFO("Failed to read HTTP response trailer!\r\n");
-         break;
-      }
-
-      //Gracefully disconnect from the HTTP server
-      httpClientDisconnect(&httpClientContext);
-
-      //Debug message
-      TRACE_INFO("Connection closed\r\n");
-
-      //End of exception handling block
-   } while(0);
-
-   //Release HTTP client context
-   httpClientDeinit(&httpClientContext);
-
-   //Return status code
-   return error;
-
-
-}
-
-
-error_t httpFilePost()
+error_t httpClientTest(char* uri_request)
 {
 	error_t error;
 	size_t length;
 	uint_t status;
 	const char_t *value;
 	IpAddr ipAddr;
-  char_t buffer[128];
+	char_t buffer[128];	
 	//Initialize HTTP client context
 	httpClientInit(&httpClientContext);
 	//Start of exception handling block
 	do
 	{
-	//Debug message
-	TRACE_INFO("\r\n\r\nResolving server name...\r\n");
-	//Resolve HTTP server name
-	error = getHostByName(NULL, APP_HTTP_SERVER_NAME, &ipAddr, 0);
-	//			error = getHostByAddress();
-	//Any error to report?
-	if(error)
-	{
-		 //Debug message
-		 TRACE_INFO("Failed to resolve server name!\r\n");
-		 break;
-	}
-	//Select HTTP protocol version
-	error = httpClientSetVersion(&httpClientContext, HTTP_VERSION_1_1);
-	//Any error to report?
-	if(error)
-		 break;
-	//Set timeout value for blocking operations
-	error = httpClientSetTimeout(&httpClientContext, 20000);
-	//Any error to report?
-	if(error)
-		 break;
-	//Debug message
-	TRACE_INFO("Connecting to HTTP server %s...\r\n",
-		 ipAddrToString(&ipAddr, NULL));
+		//Debug message
+		TRACE_INFO("\r\n\r\nResolving server name...\r\n");
+		//Resolve HTTP server name
+		error = getHostByName(NULL, APP_HTTP_SERVER_NAME, &ipAddr, 0);
+		//Any error to report?
+		if(error)
+		{
+			 //Debug message
+			 TRACE_INFO("Failed to resolve server name!\r\n");
+			 break;
+		}
+		//Select HTTP protocol version
+		error = httpClientSetVersion(&httpClientContext, HTTP_VERSION_1_1);
+		//Any error to report?
+		if(error)
+			 break;
+		//Set timeout value for blocking operations
+		error = httpClientSetTimeout(&httpClientContext, 20000);
+		//Any error to report?
+		if(error)
+			 break;
+		//Debug message
+		TRACE_INFO("Connecting to HTTP server %s...\r\n",
+			 ipAddrToString(&ipAddr, NULL));
 
-	//Connect to the HTTP server
-	error = httpClientConnect(&httpClientContext, &ipAddr,
-		 APP_HTTP_SERVER_PORT);
-	//Any error to report?
-	if(error)
-	{
-		 //Debug message
-		 TRACE_INFO("Failed to connect to HTTP server!\r\n");
-		 break;
-	}
-	//Create an HTTP request 
-	httpClientCreateRequest(&httpClientContext);
-	httpClientSetMethod(&httpClientContext, "POST");
-	httpClientSetUri(&httpClientContext, APP_HTTP_URI_POSTFILE);
+		//Connect to the HTTP server
+		error = httpClientConnect(&httpClientContext, &ipAddr,
+			 APP_HTTP_SERVER_PORT);
+		//Any error to report?
+		if(error)
+		{
+			 //Debug message
+			 TRACE_INFO("Failed to connect to HTTP server!\r\n");
+			 break;
+		}
+		//Create an HTTP request 
+		httpClientCreateRequest(&httpClientContext);
+		httpClientSetMethod(&httpClientContext, "GET");
+		httpClientSetUri(&httpClientContext, uri_request);
 
-	//Set query string
-	//      httpClientAddQueryParam(&httpClientContext, "param1", "value1");
-	//      httpClientAddQueryParam(&httpClientContext, "param2", "value2");
+		//Add HTTP header fields
+		httpClientAddHeaderField(&httpClientContext, "Host", APP_HTTP_SERVER_NAME);
+		httpClientAddHeaderField(&httpClientContext, "User-Agent", "Mozilla/5.0");
+		httpClientAddHeaderField(&httpClientContext, "Content-Type", "application/json");
+		httpClientAddHeaderField(&httpClientContext, "Transfer-Encoding", "deflate");
 
-	//Add HTTP header fields
-	httpClientAddHeaderField(&httpClientContext, "Host", APP_HTTP_SERVER_NAME);
-	httpClientAddHeaderField(&httpClientContext, "User-Agent", "Mozilla/5.0");
-	httpClientAddHeaderField(&httpClientContext, "Content-Type", "multipart/form-data");
-	httpClientAddHeaderField(&httpClientContext, "Transfer-Encoding", "deflate");
+		//Send HTTP request header
+		error = httpClientWriteHeader(&httpClientContext);
+		//Any error to report?
+		if(error)
+		{
+			 //Debug message
+			 TRACE_INFO("Failed to write HTTP request header!\r\n");
+			 break;
+		}
+		//Receive HTTP response header
+		error = httpClientReadHeader(&httpClientContext);
+		//Any error to report?
+		if(error)
+		{
+			 //Debug message
+			 TRACE_INFO("Failed to read HTTP response header!\r\n");
+			 break;
+		}
 
-	//Send HTTP request header
-	error = httpClientWriteHeader(&httpClientContext);
-	//Any error to report?
-	if(error)
-	{
-		 //Debug message
-		 TRACE_INFO("Failed to write HTTP request header!\r\n");
-		 break;
-	}
+		//Retrieve HTTP status code
+		status = httpClientGetStatus(&httpClientContext);
+		//Debug message
+		TRACE_INFO("HTTP status code: %u\r\n", status);
 
-	//Send HTTP request body
-	error = httpClientWriteBody(&httpClientContext, "Hello World!", 12,
-		 NULL, 0);
-	//Any error to report?
-	if(error)
-	{
-		 //Debug message
-		 TRACE_INFO("Failed to write HTTP request body!\r\n");
-		 break;
-	}
+		//Retrieve the value of the Content-Type header field
+		value = httpClientGetHeaderField(&httpClientContext, "Content-Type");
+		
+		//Header field found?
+		if(value != NULL)
+		{
+			 //Debug message
+			 TRACE_INFO("Content-Type header field value: %s\r\n", value);
+		}
+		else
+		{
+			 //Debug message
+			 TRACE_INFO("Content-Type header field not found!\r\n");
+		}
 
-	//Receive HTTP response header
-	error = httpClientReadHeader(&httpClientContext);
-	//Any error to report?
-	if(error)
-	{
-		 //Debug message
-		 TRACE_INFO("Failed to read HTTP response header!\r\n");
-		 break;
-	}
-
-	//Retrieve HTTP status code
-	status = httpClientGetStatus(&httpClientContext);
-	//Debug message
-	TRACE_INFO("HTTP status code: %u\r\n", status);
-
-	//Retrieve the value of the Content-Type header field
-	value = httpClientGetHeaderField(&httpClientContext, "Content-Type");
-
-	//Header field found?
-	if(value != NULL)
-	{
-		 //Debug message
-		 TRACE_INFO("Content-Type header field value: %s\r\n", value);
-	}
-	else
-	{
-		 //Debug message
-		 TRACE_INFO("Content-Type header field not found!\r\n");
-	}
-
-	//Receive HTTP response body
-	while(!error)
-	{
-		 //Read data
-		 error = httpClientReadBody(&httpClientContext, buffer,
-				sizeof(buffer) - 1, &length, 0);
-
-		 //Check status code
-		 if(!error)
-		 {
-				//Properly terminate the string with a NULL character
-				buffer[length] = '\0';
-				//Dump HTTP response body
-				TRACE_INFO("%s", buffer);
-				cpuInfoParser();					 
-		 }
-	}
-	//Terminate the HTTP response body with a CRLF
-	TRACE_INFO("\r\n");
-	//Any error to report?
-	if(error != ERROR_END_OF_STREAM)
-		 break;
-	//Close HTTP response body
-	error = httpClientCloseBody(&httpClientContext);
-	//Any error to report?
-	if(error)
-	{
-		 //Debug message
-		 TRACE_INFO("Failed to read HTTP response trailer!\r\n");
-		 break;
-	}
-	//Gracefully disconnect from the HTTP server
-	httpClientDisconnect(&httpClientContext);
-	//Debug message
-	TRACE_INFO("Connection closed\r\n");
-	//End of exception handling block
+		//Receive HTTP response body
+		while(!error)
+		{
+			 //Read data
+			 error = httpClientReadBody(&httpClientContext, buffer,
+					sizeof(buffer)-1, &length, 0);
+			 //Check status code
+			 if(!error)
+			 {
+					//Properly terminate the string with a NULL character
+					buffer[length] = '\0';
+					//Dump HTTP response body
+					TRACE_INFO("%s", buffer);
+					strcpy(buffer_http, buffer);// copy the buffer content to the http buffer
+					cpuInfoParser();					 
+			 }
+		}
+		//Terminate the HTTP response body with a CRLF
+		TRACE_INFO("\r\n");
+		//Any error to report?
+		if(error != ERROR_END_OF_STREAM)
+			 break;
+		//Close HTTP response body
+		error = httpClientCloseBody(&httpClientContext);
+		//Any error to report?
+		if(error)
+		{
+			 //Debug message
+			 TRACE_INFO("Failed to read HTTP response trailer!\r\n");
+			 break;
+		}
+		//Gracefully disconnect from the HTTP server
+		httpClientDisconnect(&httpClientContext);
+		//Debug message
+		TRACE_INFO("Connection closed\r\n");
+		//End of exception handling block
 	} while(0);
 	//Release HTTP client context
 	httpClientDeinit(&httpClientContext);
 
 	//Return status code
 	return error;
-
-
-}
-
-error_t tftpGetFile(void)
-{
-   error_t error;
-   uint_t i;
-   size_t n;
-   int8_t buffer[512];
-   IpAddr ipAddr;
-	
-		uint32_t byteswritten = 0;
-   //Initialize TFTP client context
-   tftpClientInit(&tftpClientContext);
-
-   //Start of exception handling block
-   do
-   {
-      //Debug message
-      TRACE_INFO("\r\n\r\nResolving server name...\r\n");
-
-      //Resolve TFTP server name
-      error = getHostByName(NULL, APP_TFTP_SERVER_NAME, &ipAddr, 0);
-      //Any error to report?
-      if(error)
-      {
-         //Debug message
-         TRACE_INFO("Failed to resolve server name!\r\n");
-         break;
-      }
-
-      //Set TFTP server address and port number
-      error = tftpClientConnect(&tftpClientContext, &ipAddr,
-         APP_TFTP_SERVER_PORT);
-      //Any error to report?
-      if(error)
-         break;
-      
-/*******************************************************************/
-      //Debug message
-      TRACE_INFO("\r\nReading file...\r\n");
-
-      //Open file for reading
-      error = tftpClientOpenFile(&tftpClientContext,
-         "Wave.wav", TFTP_FILE_MODE_READ);
-
-      //Check status code
-      if(error)
-      {
-         //Debug message
-         TRACE_INFO("Failed to open file for reading!\r\n");
-         break;
-      }
-			f_open(&WavFile, "Wave1.wav", FA_CREATE_ALWAYS | FA_WRITE);
-      //Read file contents
-      while(1)
-      {
-         //Read data
-         error = tftpClientReadFile(&tftpClientContext, buffer,
-            sizeof(buffer), &n, 0);
-         //Any error to report?
-         if(error)
-            break;
-				   //Properly terminate the string
-//				  buffer[n] = '\0';
-					f_write(&WavFile, buffer, sizeof(buffer), (void*)&byteswritten);
-
-         //Debug message
-         TRACE_INFO("%x", buffer);
-				 if( byteswritten == 0)
-						break;
-      }
-			f_close(&WavFile);
-      //Check status code
-      if(error != ERROR_END_OF_STREAM)
-      {
-         //Debug message
-         TRACE_INFO("Failed to read file!\r\n");
-         break;
-      }
-
-      //Close file
-      tftpClientCloseFile(&tftpClientContext);
-
-      //End of exception handling block
-   } while(0);
-
-   //Release TFTP client context
-   tftpClientDeinit(&tftpClientContext);
-
-   //Return status code
-   return error;
-}
-
-error_t tftpPutFile(void)//from stm32 to backend
-{
-error_t error;
-   uint_t i;
-   size_t n;
-   int8_t buffer[512];
-   IpAddr ipAddr;
-
-  uint32_t bytesread;
- 
-  FRESULT res;
-   //Initialize TFTP client context
-   tftpClientInit(&tftpClientContext);
-
-   //Start of exception handling block
-   do
-   {
-      //Debug message
-      TRACE_INFO("\r\n\r\nResolving server name...\r\n");
-
-      //Resolve TFTP server name
-      error = getHostByName(NULL, APP_TFTP_SERVER_NAME, &ipAddr, 0);
-      //Any error to report?
-      if(error)
-      {
-         //Debug message
-         TRACE_INFO("Failed to resolve server name!\r\n");
-         break;
-      }
-
-      //Set TFTP server address and port number
-      error = tftpClientConnect(&tftpClientContext, &ipAddr,
-         APP_TFTP_SERVER_PORT);
-      //Any error to report?
-      if(error)
-         break;
-
-      //Debug message
-      TRACE_INFO("\r\nWriting file...\r\n");
-
-      //Open file for writing
-      error = tftpClientOpenFile(&tftpClientContext,
-				"Wavexxxxxx.wav", TFTP_FILE_MODE_WRITE);
-      //Any error to report?
-      if(error)
-      {
-         //Debug message
-         TRACE_INFO("Failed to open file for writing!\r\n");
-         break;
-      }      
-			f_open(&WavFile, "Wave1.wav", FA_READ);
-      //Write file contents
-
-      while(1)
-      {
-				res = f_read(&WavFile, buffer, sizeof(buffer), (void*)&bytesread);
-				if(res != FR_OK) 
-				{
-				 TRACE_INFO("F_Read failed" );
-				}
-				buffer[bytesread] = '\0';
-				//Write data
-				 error = tftpClientWriteFile(&tftpClientContext, buffer,
-							sizeof(buffer), &n, 0);
-				//Properly terminate the string
-
-				//Debug message
-				 TRACE_INFO("%x", buffer);
-				if(bytesread == 0)
-				 break;
-        //Any error to report?
-         if(error)
-            break;
-      }
-
-
-      //Check status code
-      if(!error)
-      {
-         //Flush pending data
-         error = tftpClientFlushFile(&tftpClientContext);
-      }
-
-       if(error)
-      {
-         //Debug message
-         TRACE_INFO("Failed to read file!\r\n");
-         break;
-      }
-
-      //Close file
-      tftpClientCloseFile(&tftpClientContext);
-
-      //End of exception handling block
-   } while(0);
-
-   //Release TFTP client context
-   tftpClientDeinit(&tftpClientContext);
-
-   //Return status code
-   return error;
-
 
 }
 
@@ -2972,19 +2406,12 @@ void StarttftpTask(void *argument)
 		#endif
 
       //User button pressed?
-
-			if(flag == 3)
-			{
-				tftpGetFile();
-				BSP_LED_On(LED1);
-				flag = 0;
-			}
-			else if(flag == 4)
-			{
-				tftpPutFile();
-				BSP_LED_Off(LED1);
-				flag = 0;
-			}
+      if(!User_PB_GetState(USER_BUTTON_S1))
+      {
+				httpClientTest("/api/dashboard/usage");
+         //Wait for the user button to be released
+				while(!User_PB_GetState(USER_BUTTON_S1));
+      }
 
       //Loop delay
     osDelay(10);
@@ -3007,7 +2434,6 @@ void TriggerTaskfun(void *argument)
   /* Infinite loop */
   for(;;)
   {
-		
 		if(!User_PB_GetState(USER_BUTTON_S1))
 		{
 			while(!User_PB_GetState(USER_BUTTON_S1));
@@ -3029,7 +2455,6 @@ void TriggerTaskfun(void *argument)
 			User_LED_Off(USER_LED_RED);
 			User_LED_On(USER_LED_BLUE);
 		}
-
     osDelay(1);
   }
   /* USER CODE END TriggerTaskfun */
@@ -3079,13 +2504,7 @@ void ftpTaskfun(void *argument)
 #endif
 
       //User button pressed?
-      if(!User_PB_GetState(USER_BUTTON_S1))
-      {
-         //FTP client test routine
-         ftpGetFile();
-         //Wait for the user button to be released
-         while(!User_PB_GetState(USER_BUTTON_S1));
-      }
+
 			if(!User_PB_GetState(USER_BUTTON_S2))
       {
          //Wait for the user button to be released

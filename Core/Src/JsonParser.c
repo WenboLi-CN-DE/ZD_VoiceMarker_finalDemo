@@ -28,12 +28,12 @@ void cpuInfoParser()
 	TRACE_INFO("\r\n cpu:%s \
 	\r\n disk:%s \
 	\r\n diskload:%.0f \
-	\r\n mem::%s \
+	\r\n mem:%s \
 	\r\n time:%.0f \
 	\r\n zone:%s ",
 	json_1->valuestring,json_2->valuestring,json_3->valuedouble,
 	json_4->valuestring,json_5->valuedouble,json_6->valuestring	);
-	
+
 	//timestamp parser:
 	char s[20]; 
 	time_t tick = json_5->valuedouble/1000; //Convert a millisecond timestamp to a second timestamp
@@ -46,6 +46,7 @@ void cpuInfoParser()
 	snprintf(msg.Buf[3],20, "%s",json_4->valuestring);
 	snprintf(msg.Buf[4],20, "%s",s);
 	snprintf(msg.Buf[5],20, "%s",json_6->valuestring);	
+	
 	cJSON_Delete(json); //release cJson(necessary)
 	osMessageQueuePut(cJsonQueueHandle,&msg,0U,0);
 }

@@ -143,9 +143,6 @@ stm32f769i_disco\main.o: ../Middlewares/Third_Party/common/debug.h
 stm32f769i_disco\main.o: ../Middlewares/Third_Party/cJson/cJSON.h
 stm32f769i_disco\main.o: ../Core/Inc/JsonParser.h
 stm32f769i_disco\main.o: ../Middlewares/Third_Party/common/str.h
-stm32f769i_disco\main.o: ../Middlewares/Third_Party/cyclone_tcp/tftp/tftp_client.h
-stm32f769i_disco\main.o: ../Middlewares/Third_Party/cyclone_tcp/tftp/tftp_common.h
-stm32f769i_disco\main.o: ../Middlewares/Third_Party/cyclone_tcp/tftp/tftp_client_misc.h
 stm32f769i_disco\main.o: ../Middlewares/Third_Party/cyclone_tcp/ftp/ftp_client.h
 stm32f769i_disco\main.o: ../Middlewares/Third_Party/common/date_time.h
 stm32f769i_disco\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\time.h

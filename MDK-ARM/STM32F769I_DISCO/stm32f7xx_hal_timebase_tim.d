@@ -1,4 +1,4 @@
-stm32f769i_disco\stm32f7xx_hal_timebase_tim.o: ..\Core\Src\stm32f7xx_hal_timebase_tim.c
+stm32f769i_disco\stm32f7xx_hal_timebase_tim.o: ../Core/Src/stm32f7xx_hal_timebase_tim.c
 stm32f769i_disco\stm32f7xx_hal_timebase_tim.o: ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal.h
 stm32f769i_disco\stm32f7xx_hal_timebase_tim.o: ../Core/Inc/stm32f7xx_hal_conf.h
 stm32f769i_disco\stm32f7xx_hal_timebase_tim.o: ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_rcc.h
