@@ -20,7 +20,7 @@ public:
 		virtual void memChanged(){};
 		virtual void timeChanged(){};
 		virtual void zoneChanged(){};
-		 
+
 protected:
     Model* model;
 };

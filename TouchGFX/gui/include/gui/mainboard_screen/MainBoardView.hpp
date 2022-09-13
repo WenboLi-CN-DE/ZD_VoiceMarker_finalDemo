@@ -11,6 +11,7 @@ public:
     virtual ~MainBoardView() {}
     virtual void setupScreen();
     virtual void tearDownScreen();
+		virtual void handleTickEvent();
 protected:
 };
 

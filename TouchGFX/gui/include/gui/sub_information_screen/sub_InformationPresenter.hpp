@@ -26,6 +26,13 @@ public:
     virtual void deactivate();
 
     virtual ~sub_InformationPresenter() {};
+						//from model
+		virtual void cpuChanged();
+		virtual void diskChanged();
+    virtual void diskLoadChanged();
+		virtual void memChanged();
+		virtual void timeChanged();
+		virtual void zoneChanged();
 
 private:
     sub_InformationPresenter();

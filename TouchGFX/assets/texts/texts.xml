@@ -6,6 +6,393 @@
   <Texts>
     <TextGroup Id="Group1" />
     <TextGroup Id="Unsorted">
+      <Text Id="__SingleUse_0PJO" Alignment="Center" TypographyId="Default">
+        <Translation Language="GB">&lt;s&gt;     Trigger Success!!</Translation>
+      </Text>
+      <Text Id="__SingleUse_FE4O" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Berlin/Europa</Translation>
+      </Text>
+      <Text Id="__SingleUse_1GDG" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">0:0:0</Translation>
+      </Text>
+      <Text Id="__SingleUse_3DWO" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_PNE7" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_95GO" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_KPHE" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">0</Translation>
+      </Text>
+      <Text Id="__SingleUse_YEUB" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">WLAN</Translation>
+      </Text>
+      <Text Id="__SingleUse_LQMY" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Port4</Translation>
+      </Text>
+      <Text Id="__SingleUse_MOR5" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Port3</Translation>
+      </Text>
+      <Text Id="__SingleUse_6F75" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Port2</Translation>
+      </Text>
+      <Text Id="__SingleUse_QFBQ" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Port1</Translation>
+      </Text>
+      <Text Id="__SingleUse_BP1C" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Mac Address:</Translation>
+      </Text>
+      <Text Id="__SingleUse_72VH" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Speed:</Translation>
+      </Text>
+      <Text Id="__SingleUse_HLIB" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Subnet Mask:</Translation>
+      </Text>
+      <Text Id="__SingleUse_HYFH" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">IP Adderess(IPv6):</Translation>
+      </Text>
+      <Text Id="__SingleUse_QGIJ" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">IP Adderess(IPv4):</Translation>
+      </Text>
+      <Text Id="__SingleUse_955B" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Network Connection:</Translation>
+      </Text>
+      <Text Id="__SingleUse_3F6O" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">WLAN</Translation>
+      </Text>
+      <Text Id="__SingleUse_TUPY" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Port4</Translation>
+      </Text>
+      <Text Id="__SingleUse_ZG15" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Port3</Translation>
+      </Text>
+      <Text Id="__SingleUse_47N2" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Port2</Translation>
+      </Text>
+      <Text Id="__SingleUse_1HS2" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Port1</Translation>
+      </Text>
+      <Text Id="__SingleUse_BI3Q" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Mac Address:</Translation>
+      </Text>
+      <Text Id="__SingleUse_AL40" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Speed:</Translation>
+      </Text>
+      <Text Id="__SingleUse_JIAU" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Subnet Mask:</Translation>
+      </Text>
+      <Text Id="__SingleUse_EPHR" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">IP Adderess(IPv6):</Translation>
+      </Text>
+      <Text Id="__SingleUse_IQVQ" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">IP Adderess(IPv4):</Translation>
+      </Text>
+      <Text Id="__SingleUse_QA29" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Network Connection:</Translation>
+      </Text>
+      <Text Id="__SingleUse_VBOG" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">WLAN</Translation>
+      </Text>
+      <Text Id="__SingleUse_KR0J" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Port4</Translation>
+      </Text>
+      <Text Id="__SingleUse_3HMF" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Port3</Translation>
+      </Text>
+      <Text Id="__SingleUse_EOVA" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Port2</Translation>
+      </Text>
+      <Text Id="__SingleUse_5LUY" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Port1</Translation>
+      </Text>
+      <Text Id="__SingleUse_4EMH" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Mac Address:</Translation>
+      </Text>
+      <Text Id="__SingleUse_KVG8" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Speed:</Translation>
+      </Text>
+      <Text Id="__SingleUse_XDM2" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Subnet Mask:</Translation>
+      </Text>
+      <Text Id="__SingleUse_EWIX" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">IP Adderess(IPv6):</Translation>
+      </Text>
+      <Text Id="__SingleUse_6VA8" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">IP Adderess(IPv4):</Translation>
+      </Text>
+      <Text Id="__SingleUse_VVQ6" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Network Connection:</Translation>
+      </Text>
+      <Text Id="__SingleUse_CKOC" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">WLAN</Translation>
+      </Text>
+      <Text Id="__SingleUse_CVJ5" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Port4</Translation>
+      </Text>
+      <Text Id="__SingleUse_2YXP" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Port3</Translation>
+      </Text>
+      <Text Id="__SingleUse_4WAT" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Port2</Translation>
+      </Text>
+      <Text Id="__SingleUse_10OX" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Port1</Translation>
+      </Text>
+      <Text Id="__SingleUse_KIJ7" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Mac Address:</Translation>
+      </Text>
+      <Text Id="__SingleUse_KOJX" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Speed:</Translation>
+      </Text>
+      <Text Id="__SingleUse_6T1X" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Subnet Mask:</Translation>
+      </Text>
+      <Text Id="__SingleUse_V5XF" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">IP Adderess(IPv6):</Translation>
+      </Text>
+      <Text Id="__SingleUse_TYIB" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">IP Adderess(IPv4):</Translation>
+      </Text>
+      <Text Id="__SingleUse_57BD" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Network Connection:</Translation>
+      </Text>
+      <Text Id="__SingleUse_NOKT" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Port3</Translation>
+      </Text>
+      <Text Id="__SingleUse_QXIL" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Port4</Translation>
+      </Text>
+      <Text Id="__SingleUse_7I1M" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Port3</Translation>
+      </Text>
+      <Text Id="__SingleUse_UKM9" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Port2</Translation>
+      </Text>
+      <Text Id="__SingleUse_8XHH" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Port1</Translation>
+      </Text>
+      <Text Id="__SingleUse_1AG3" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Mac Address:</Translation>
+      </Text>
+      <Text Id="__SingleUse_IECE" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Speed:</Translation>
+      </Text>
+      <Text Id="__SingleUse_FSJV" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Subnet Mask:</Translation>
+      </Text>
+      <Text Id="__SingleUse_WVTT" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">IP Adderess(IPv6):</Translation>
+      </Text>
+      <Text Id="__SingleUse_HCEI" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">IP Adderess(IPv4):</Translation>
+      </Text>
+      <Text Id="__SingleUse_MTII" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Network Connection:</Translation>
+      </Text>
+      <Text Id="__SingleUse_SH49" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Ethernet</Translation>
+      </Text>
+      <Text Id="__SingleUse_OD4R" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Flexray</Translation>
+      </Text>
+      <Text Id="__SingleUse_VRMM" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">UART</Translation>
+      </Text>
+      <Text Id="__SingleUse_7FLP" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">LIN</Translation>
+      </Text>
+      <Text Id="__SingleUse_MCDK" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">CAN</Translation>
+      </Text>
+      <Text Id="__SingleUse_OASU" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">ETH4</Translation>
+      </Text>
+      <Text Id="__SingleUse_63FZ" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">ETH3</Translation>
+      </Text>
+      <Text Id="__SingleUse_WDNV" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">ETH2</Translation>
+      </Text>
+      <Text Id="__SingleUse_0UTX" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">ETH1</Translation>
+      </Text>
+      <Text Id="__SingleUse_WI2H" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Ethernet</Translation>
+      </Text>
+      <Text Id="__SingleUse_IEG5" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Flexray</Translation>
+      </Text>
+      <Text Id="__SingleUse_BM1S" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">UART</Translation>
+      </Text>
+      <Text Id="__SingleUse_DZEE" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">LIN</Translation>
+      </Text>
+      <Text Id="__SingleUse_TBFO" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">CAN</Translation>
+      </Text>
+      <Text Id="__SingleUse_VSRH" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">FLX4</Translation>
+      </Text>
+      <Text Id="__SingleUse_A2VB" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">FLX3</Translation>
+      </Text>
+      <Text Id="__SingleUse_F5K6" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">FLX2</Translation>
+      </Text>
+      <Text Id="__SingleUse_AWZ3" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">FLX1</Translation>
+      </Text>
+      <Text Id="__SingleUse_JB7L" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Ethernet</Translation>
+      </Text>
+      <Text Id="__SingleUse_ODQ2" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Flexray</Translation>
+      </Text>
+      <Text Id="__SingleUse_L4G1" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">UART</Translation>
+      </Text>
+      <Text Id="__SingleUse_ALI2" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">LIN</Translation>
+      </Text>
+      <Text Id="__SingleUse_A3TK" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">CAN</Translation>
+      </Text>
+      <Text Id="__SingleUse_VRMF" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">UART8</Translation>
+      </Text>
+      <Text Id="__SingleUse_UHDY" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">UART7</Translation>
+      </Text>
+      <Text Id="__SingleUse_PWLN" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">UART6</Translation>
+      </Text>
+      <Text Id="__SingleUse_ZAEM" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">UART5</Translation>
+      </Text>
+      <Text Id="__SingleUse_ASNL" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">UART4</Translation>
+      </Text>
+      <Text Id="__SingleUse_S8YS" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">UART3</Translation>
+      </Text>
+      <Text Id="__SingleUse_DERH" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">UART2</Translation>
+      </Text>
+      <Text Id="__SingleUse_QRI4" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">UART1</Translation>
+      </Text>
+      <Text Id="__SingleUse_LF9E" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Ethernet</Translation>
+      </Text>
+      <Text Id="__SingleUse_LXMW" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Flexray</Translation>
+      </Text>
+      <Text Id="__SingleUse_ZCVR" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">UART</Translation>
+      </Text>
+      <Text Id="__SingleUse_63BY" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">LIN</Translation>
+      </Text>
+      <Text Id="__SingleUse_1JGM" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">CAN</Translation>
+      </Text>
+      <Text Id="__SingleUse_W1SY" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">LIN8</Translation>
+      </Text>
+      <Text Id="__SingleUse_SYGE" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">LIN7</Translation>
+      </Text>
+      <Text Id="__SingleUse_Q316" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">LIN6</Translation>
+      </Text>
+      <Text Id="__SingleUse_LLBD" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">LIN5</Translation>
+      </Text>
+      <Text Id="__SingleUse_NREU" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">LIN4</Translation>
+      </Text>
+      <Text Id="__SingleUse_ID4W" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">LIN3</Translation>
+      </Text>
+      <Text Id="__SingleUse_NRJE" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">LIN2</Translation>
+      </Text>
+      <Text Id="__SingleUse_Q1XX" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">LIN1</Translation>
+      </Text>
+      <Text Id="__SingleUse_PSDR" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Ethernet</Translation>
+      </Text>
+      <Text Id="__SingleUse_QXTJ" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">Flexray</Translation>
+      </Text>
+      <Text Id="__SingleUse_69I9" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">UART</Translation>
+      </Text>
+      <Text Id="__SingleUse_GL62" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">LIN</Translation>
+      </Text>
+      <Text Id="__SingleUse_6KO5" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">CAN</Translation>
+      </Text>
+      <Text Id="__SingleUse_PWFW" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">CAN18</Translation>
+      </Text>
+      <Text Id="__SingleUse_09DG" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">CAN17</Translation>
+      </Text>
+      <Text Id="__SingleUse_GULS" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">CAN16</Translation>
+      </Text>
+      <Text Id="__SingleUse_SBHR" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">CAN15</Translation>
+      </Text>
+      <Text Id="__SingleUse_4GGE" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">CAN14</Translation>
+      </Text>
+      <Text Id="__SingleUse_ISDB" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">CAN13</Translation>
+      </Text>
+      <Text Id="__SingleUse_ELKK" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">CAN12</Translation>
+      </Text>
+      <Text Id="__SingleUse_HY9A" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">CAN11</Translation>
+      </Text>
+      <Text Id="__SingleUse_SXJ4" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">CAN10</Translation>
+      </Text>
+      <Text Id="__SingleUse_PVXW" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">CAN9</Translation>
+      </Text>
+      <Text Id="__SingleUse_STYN" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">CAN8</Translation>
+      </Text>
+      <Text Id="__SingleUse_DGKR" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">CAN7</Translation>
+      </Text>
+      <Text Id="__SingleUse_UFLA" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">CAN6</Translation>
+      </Text>
+      <Text Id="__SingleUse_KFEW" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">CAN5</Translation>
+      </Text>
+      <Text Id="__SingleUse_2DIY" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">CAN4</Translation>
+      </Text>
+      <Text Id="__SingleUse_CPNS" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">CAN3</Translation>
+      </Text>
+      <Text Id="__SingleUse_YQB4" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">CAN2</Translation>
+      </Text>
+      <Text Id="__SingleUse_K4CL" Alignment="Left" TypographyId="Default">
+        <Translation Language="GB">CAN1</Translation>
+      </Text>
       <Text Id="__SingleUse_D2BQ" Alignment="Left" TypographyId="Default">
         <Translation Language="GB">Camera</Translation>
       </Text>
@@ -49,7 +436,7 @@
         <Translation Language="GB">CPU: &lt;s&gt;%</Translation>
       </Text>
       <Text Id="__SingleUse_S0L5" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">Zone:</Translation>
+        <Translation Language="GB">Zone:&lt;s&gt;</Translation>
       </Text>
       <Text Id="__SingleUse_4IO7" Alignment="Left" TypographyId="Default">
         <Translation Language="GB">Memory: &lt;s&gt;%</Translation>
@@ -61,7 +448,7 @@
         <Translation Language="GB">Disk: &lt;s&gt;%</Translation>
       </Text>
       <Text Id="__SingleUse_WCWV" Alignment="Left" TypographyId="Default">
-        <Translation Language="GB">Seires Number:</Translation>
+        <Translation Language="GB">Seires Number:&lt;s&gt;</Translation>
       </Text>
       <Text Id="__SingleUse_LD7H" Alignment="Left" TypographyId="Large">
         <Translation Language="GB">TriggerInfo 1</Translation>
@@ -91,7 +478,7 @@
         <Translation Language="GB">TriggerInfo 1</Translation>
       </Text>
       <Text Id="__SingleUse_JLBO" Alignment="Left" TypographyId="Large">
-        <Translation Language="GB">TriggerInfo 1</Translation>
+        <Translation Language="GB">TriggerInfo1:&lt;s&gt;</Translation>
       </Text>
       <Text Id="__SingleUse_8CTU" Alignment="Left" TypographyId="Large">
         <Translation Language="GB">VoiceFile_&lt;s&gt;</Translation>
@@ -214,7 +601,7 @@
         <Translation Language="GB">time:  &lt;d&gt;:&lt;d&gt;</Translation>
       </Text>
       <Text Id="__SingleUse_C6M9" Alignment="Left" TypographyId="Large">
-        <Translation Language="GB">VoiceMarker Application</Translation>
+        <Translation Language="GB">VoiceMarker Demo</Translation>
       </Text>
     </TextGroup>
   </Texts>

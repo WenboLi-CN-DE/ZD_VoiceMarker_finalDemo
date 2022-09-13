@@ -10,4 +10,5 @@
 	
 
 	void cpuInfoParser();
+	void triggerParser();
 #endif /* __MAIN_H */

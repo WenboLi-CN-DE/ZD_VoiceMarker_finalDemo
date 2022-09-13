@@ -14,16 +14,36 @@
 #include <gui/common/FrontendApplication.hpp>
 #include <gui/model/Model.hpp>
 
+#include <gui/mainboard_screen/MainBoardView.hpp>
+#include <gui/mainboard_screen/MainBoardPresenter.hpp>
 #include <gui/screen1_screen/Screen1View.hpp>
 #include <gui/screen1_screen/Screen1Presenter.hpp>
 #include <gui/screen2_screen/Screen2View.hpp>
 #include <gui/screen2_screen/Screen2Presenter.hpp>
-#include <gui/mainboard_screen/MainBoardView.hpp>
-#include <gui/mainboard_screen/MainBoardPresenter.hpp>
 #include <gui/markerhistory_screen/MarkerHistoryView.hpp>
 #include <gui/markerhistory_screen/MarkerHistoryPresenter.hpp>
 #include <gui/sub_information_screen/sub_InformationView.hpp>
 #include <gui/sub_information_screen/sub_InformationPresenter.hpp>
+#include <gui/sub_busload_can_screen/sub_Busload_CANView.hpp>
+#include <gui/sub_busload_can_screen/sub_Busload_CANPresenter.hpp>
+#include <gui/sub_busload_lin_screen/sub_Busload_LINView.hpp>
+#include <gui/sub_busload_lin_screen/sub_Busload_LINPresenter.hpp>
+#include <gui/sub_busload_uart_screen/sub_Busload_UARTView.hpp>
+#include <gui/sub_busload_uart_screen/sub_Busload_UARTPresenter.hpp>
+#include <gui/sub_busload_flexray_screen/sub_Busload_FlexrayView.hpp>
+#include <gui/sub_busload_flexray_screen/sub_Busload_FlexrayPresenter.hpp>
+#include <gui/sub_busload_eth_screen/sub_Busload_ETHView.hpp>
+#include <gui/sub_busload_eth_screen/sub_Busload_ETHPresenter.hpp>
+#include <gui/sub_network_port1_screen/sub_Network_Port1View.hpp>
+#include <gui/sub_network_port1_screen/sub_Network_Port1Presenter.hpp>
+#include <gui/sub_network_port2_screen/sub_Network_Port2View.hpp>
+#include <gui/sub_network_port2_screen/sub_Network_Port2Presenter.hpp>
+#include <gui/sub_network_port3_screen/sub_Network_Port3View.hpp>
+#include <gui/sub_network_port3_screen/sub_Network_Port3Presenter.hpp>
+#include <gui/sub_network_port4_screen/sub_Network_Port4View.hpp>
+#include <gui/sub_network_port4_screen/sub_Network_Port4Presenter.hpp>
+#include <gui/sub_network_wlan_screen/sub_Network_WLANView.hpp>
+#include <gui/sub_network_wlan_screen/sub_Network_WLANPresenter.hpp>
 
 
 /**
@@ -46,12 +66,22 @@ public:
      * A list of all view types. Must end with meta::Nil.
      * @note All view types used in the application MUST be added to this list!
      */
-    typedef touchgfx::meta::TypeList< Screen1View,
+    typedef touchgfx::meta::TypeList< MainBoardView,
+            touchgfx::meta::TypeList< Screen1View,
             touchgfx::meta::TypeList< Screen2View,
-            touchgfx::meta::TypeList< MainBoardView,
             touchgfx::meta::TypeList< MarkerHistoryView,
             touchgfx::meta::TypeList< sub_InformationView,
-            touchgfx::meta::Nil > > > >
+            touchgfx::meta::TypeList< sub_Busload_CANView,
+            touchgfx::meta::TypeList< sub_Busload_LINView,
+            touchgfx::meta::TypeList< sub_Busload_UARTView,
+            touchgfx::meta::TypeList< sub_Busload_FlexrayView,
+            touchgfx::meta::TypeList< sub_Busload_ETHView,
+            touchgfx::meta::TypeList< sub_Network_Port1View,
+            touchgfx::meta::TypeList< sub_Network_Port2View,
+            touchgfx::meta::TypeList< sub_Network_Port3View,
+            touchgfx::meta::TypeList< sub_Network_Port4View,
+            touchgfx::meta::TypeList< sub_Network_WLANView,
+            touchgfx::meta::Nil > > > > > > > > > > > > > >
             > GeneratedViewTypes;
 
     /**
@@ -63,12 +93,22 @@ public:
      * A list of all presenter types. Must end with meta::Nil.
      * @note All presenter types used in the application MUST be added to this list!
      */
-    typedef touchgfx::meta::TypeList< Screen1Presenter,
+    typedef touchgfx::meta::TypeList< MainBoardPresenter,
+            touchgfx::meta::TypeList< Screen1Presenter,
             touchgfx::meta::TypeList< Screen2Presenter,
-            touchgfx::meta::TypeList< MainBoardPresenter,
             touchgfx::meta::TypeList< MarkerHistoryPresenter,
             touchgfx::meta::TypeList< sub_InformationPresenter,
-            touchgfx::meta::Nil > > > >
+            touchgfx::meta::TypeList< sub_Busload_CANPresenter,
+            touchgfx::meta::TypeList< sub_Busload_LINPresenter,
+            touchgfx::meta::TypeList< sub_Busload_UARTPresenter,
+            touchgfx::meta::TypeList< sub_Busload_FlexrayPresenter,
+            touchgfx::meta::TypeList< sub_Busload_ETHPresenter,
+            touchgfx::meta::TypeList< sub_Network_Port1Presenter,
+            touchgfx::meta::TypeList< sub_Network_Port2Presenter,
+            touchgfx::meta::TypeList< sub_Network_Port3Presenter,
+            touchgfx::meta::TypeList< sub_Network_Port4Presenter,
+            touchgfx::meta::TypeList< sub_Network_WLANPresenter,
+            touchgfx::meta::Nil > > > > > > > > > > > > > >
             > GeneratedPresenterTypes;
 
     /**
@@ -92,7 +132,7 @@ public:
 
     virtual void gotoStartScreen(FrontendApplication& app)
     {
-        app.gotoScreen1ScreenNoTransition();
+        app.gotoMainBoardScreenNoTransition();
     }
 protected:
     FrontendHeapBase(touchgfx::AbstractPartition& presenters, touchgfx::AbstractPartition& views, touchgfx::AbstractPartition& transitions, FrontendApplication& app)

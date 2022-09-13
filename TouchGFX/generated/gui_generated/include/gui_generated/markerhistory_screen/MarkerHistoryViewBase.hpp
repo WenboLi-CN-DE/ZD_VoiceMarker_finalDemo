@@ -12,8 +12,8 @@
 #include <touchgfx/widgets/Button.hpp>
 #include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/containers/ScrollableContainer.hpp>
-#include <touchgfx/containers/Container.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
+#include <touchgfx/containers/Container.hpp>
 #include <gui/containers/CustomContainer1.hpp>
 
 class MarkerHistoryViewBase : public touchgfx::View<MarkerHistoryPresenter>
@@ -39,7 +39,7 @@ protected:
     touchgfx::Image image3;
     touchgfx::TextArea Trigger;
     touchgfx::ScrollableContainer TriggerScrollableContainer;
-    touchgfx::TextArea textArea2;
+    touchgfx::TextAreaWithOneWildcard textArea2;
     touchgfx::TextArea textArea2_1;
     touchgfx::TextArea textArea2_2;
     touchgfx::TextArea textArea2_3;
@@ -81,6 +81,12 @@ protected:
     touchgfx::Button button2_9;
     touchgfx::TextAreaWithOneWildcard textArea1_10;
     CustomContainer1 customContainer11;
+
+    /*
+     * Wildcard Buffers
+     */
+    static const uint16_t TEXTAREA2_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar textArea2Buffer[TEXTAREA2_SIZE];
 
 private:
 

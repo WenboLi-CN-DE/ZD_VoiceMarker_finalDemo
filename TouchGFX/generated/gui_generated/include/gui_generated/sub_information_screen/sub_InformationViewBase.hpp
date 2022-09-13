@@ -9,7 +9,6 @@
 #include <gui/sub_information_screen/sub_InformationPresenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
 #include <touchgfx/widgets/Image.hpp>
-#include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/widgets/Button.hpp>
 
@@ -30,14 +29,33 @@ protected:
      */
     touchgfx::Box __background;
     touchgfx::Image image1;
-    touchgfx::TextArea textSNNumber;
-    touchgfx::TextAreaWithOneWildcard textDiskload;
-    touchgfx::TextAreaWithOneWildcard textDisk;
-    touchgfx::TextAreaWithOneWildcard textMemory;
-    touchgfx::TextArea textZone;
-    touchgfx::TextAreaWithOneWildcard textCPU;
+    touchgfx::Box box1;
+    touchgfx::TextAreaWithOneWildcard textZone;
     touchgfx::TextAreaWithOneWildcard textTime;
+    touchgfx::TextAreaWithOneWildcard textDiskload;
+    touchgfx::TextAreaWithOneWildcard textMemory;
+    touchgfx::TextAreaWithOneWildcard textDisk;
+    touchgfx::TextAreaWithOneWildcard textCPU;
+    touchgfx::TextAreaWithOneWildcard textSNNumber;
     touchgfx::Button Button_File_Main;
+
+    /*
+     * Wildcard Buffers
+     */
+    static const uint16_t TEXTZONE_SIZE = 50;
+    touchgfx::Unicode::UnicodeChar textZoneBuffer[TEXTZONE_SIZE];
+    static const uint16_t TEXTTIME_SIZE = 50;
+    touchgfx::Unicode::UnicodeChar textTimeBuffer[TEXTTIME_SIZE];
+    static const uint16_t TEXTDISKLOAD_SIZE = 50;
+    touchgfx::Unicode::UnicodeChar textDiskloadBuffer[TEXTDISKLOAD_SIZE];
+    static const uint16_t TEXTMEMORY_SIZE = 50;
+    touchgfx::Unicode::UnicodeChar textMemoryBuffer[TEXTMEMORY_SIZE];
+    static const uint16_t TEXTDISK_SIZE = 50;
+    touchgfx::Unicode::UnicodeChar textDiskBuffer[TEXTDISK_SIZE];
+    static const uint16_t TEXTCPU_SIZE = 50;
+    touchgfx::Unicode::UnicodeChar textCPUBuffer[TEXTCPU_SIZE];
+    static const uint16_t TEXTSNNUMBER_SIZE = 50;
+    touchgfx::Unicode::UnicodeChar textSNNumberBuffer[TEXTSNNUMBER_SIZE];
 
 private:
 

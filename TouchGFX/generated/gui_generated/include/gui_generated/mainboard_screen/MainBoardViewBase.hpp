@@ -14,6 +14,9 @@
 #include <touchgfx/widgets/canvas/PainterRGB565.hpp>
 #include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/widgets/Button.hpp>
+#include <touchgfx/widgets/TextAreaWithWildcard.hpp>
+#include <touchgfx/EasingEquations.hpp>
+#include <touchgfx/mixins/FadeAnimator.hpp>
 
 class MainBoardViewBase : public touchgfx::View<MainBoardPresenter>
 {
@@ -35,6 +38,7 @@ protected:
     touchgfx::ScalableImage scalableImage1;
     touchgfx::Line line1;
     touchgfx::PainterRGB565 line1Painter;
+    touchgfx::Box box1;
     touchgfx::TextArea textWorkingState;
     touchgfx::TextArea textArea1_1;
     touchgfx::TextArea textArea1_2;
@@ -53,6 +57,13 @@ protected:
     touchgfx::TextArea textNetwork;
     touchgfx::TextArea textSetting;
     touchgfx::TextArea textCamera;
+    touchgfx::FadeAnimator< touchgfx::TextAreaWithOneWildcard > textTriggerInfo;
+
+    /*
+     * Wildcard Buffers
+     */
+    static const uint16_t TEXTTRIGGERINFO_SIZE = 20;
+    touchgfx::Unicode::UnicodeChar textTriggerInfoBuffer[TEXTTRIGGERINFO_SIZE];
 
 private:
 

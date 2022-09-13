@@ -244,6 +244,126 @@
     <Filter Include="Header Files\generated\gui_generated\sub_information_screen">
       <UniqueIdentifier>A0A59080-CE12-AD77-7A21-3B61395F9CAD</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\gui\sub_busload_can_screen">
+      <UniqueIdentifier>A710654F-A5BA-C92F-1578-373F5D648FF4</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\sub_busload_can_screen">
+      <UniqueIdentifier>61F7248B-5B9A-88F3-C5BA-F926AD0BB11E</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\sub_busload_eth_screen">
+      <UniqueIdentifier>0A322F5E-F61F-1DD9-5F63-EB9D7A2584FB</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\sub_busload_eth_screen">
+      <UniqueIdentifier>F6311994-AA1E-0BF5-6C66-728FAD040092</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\sub_busload_flexray_screen">
+      <UniqueIdentifier>E87D1153-48D7-79E8-90B0-0E46B6B40CF9</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\sub_busload_flexray_screen">
+      <UniqueIdentifier>DEBEBE7C-ED15-81A6-D3B8-907F0FBB6222</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\sub_busload_uart_screen">
+      <UniqueIdentifier>AF14FA04-CED6-B220-59AD-E16847631F10</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\sub_busload_lin_screen">
+      <UniqueIdentifier>984F9322-904D-C41F-695E-F76CEFA73AF2</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\sub_busload_uart_screen">
+      <UniqueIdentifier>50696D15-3945-A287-9178-B23F770D314C</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\sub_busload_lin_screen">
+      <UniqueIdentifier>D2F46A4B-20BB-FECA-B370-406B5A107ADE</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\sub_busload_lin_screen">
+      <UniqueIdentifier>033820DC-00A4-F167-A9D7-A99EA1933523</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\sub_busload_lin_screen">
+      <UniqueIdentifier>E5B9FECE-2623-3F86-611F-D871D7692964</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\sub_busload_flexray_screen">
+      <UniqueIdentifier>8B116C84-AB48-4898-B05E-DE3F2CBBB12A</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\sub_busload_uart_screen">
+      <UniqueIdentifier>E2EA5E04-FEE8-E6EE-1808-BE35B58E97F9</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\sub_busload_eth_screen">
+      <UniqueIdentifier>445DB0A0-AF06-F9B7-7D0C-B225AB0D22E9</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\sub_busload_eth_screen">
+      <UniqueIdentifier>6E44C614-83C4-CA8B-1A6D-EAFCD0261473</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\sub_busload_uart_screen">
+      <UniqueIdentifier>7F1A9B07-381F-9988-1AF6-2ECA3CBB69D7</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\sub_busload_can_screen">
+      <UniqueIdentifier>EA583F51-E442-176C-AE49-710F97B60C74</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\sub_busload_can_screen">
+      <UniqueIdentifier>B9BFEA67-5911-F0D5-2787-0A7D296DED8A</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\sub_busload_flexray_screen">
+      <UniqueIdentifier>5C1ED785-801E-B6A6-11E8-FC16BCCB2D87</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\sub_network_port4_screen">
+      <UniqueIdentifier>D523A972-2631-14D8-CB5C-C164AF5C86C4</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\sub_network_port4_screen">
+      <UniqueIdentifier>39827D1A-E08A-A427-935E-C28E75146A77</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\sub_network_wlan_screen">
+      <UniqueIdentifier>D98D0DAA-62E5-2B20-AEA9-D538DEF0DF60</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\sub_network_port1_screen">
+      <UniqueIdentifier>707DA625-5BCF-A491-7B64-FB8EF76EA573</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\sub_network_port1_screen">
+      <UniqueIdentifier>60E3E312-5336-A55E-7B83-45B6135092EF</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\sub_network_wlan_screen">
+      <UniqueIdentifier>C4C837EA-E5CD-D342-D47D-58579DBB012B</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\sub_network_port2_screen">
+      <UniqueIdentifier>3B402E6E-55FB-9F9F-94FE-1C15A586172E</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\sub_network_port2_screen">
+      <UniqueIdentifier>A90E85DC-23C4-347E-7B80-AA95DA0A792B</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gui\sub_network_port3_screen">
+      <UniqueIdentifier>93F56472-993E-3A94-2B46-D8BF873107C5</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gui\sub_network_port3_screen">
+      <UniqueIdentifier>636007B4-9214-B9AA-3955-C2229A02225C</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\sub_network_port2_screen">
+      <UniqueIdentifier>0F740265-DDC2-36A4-5F4A-0F526CE7C908</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\sub_network_port3_screen">
+      <UniqueIdentifier>A902CA7F-4846-1637-2E1A-F767E3725EEF</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\sub_network_port2_screen">
+      <UniqueIdentifier>87F8B490-77BD-8B26-7530-66108B094B24</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\sub_network_port1_screen">
+      <UniqueIdentifier>C0C35836-E10A-962F-4C18-B3F99012521A</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\sub_network_port3_screen">
+      <UniqueIdentifier>640002F5-C342-2A2D-031B-520187A513D5</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\sub_network_port1_screen">
+      <UniqueIdentifier>E643F9CD-D457-CEB2-6DEA-0EBC835BF6A0</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\sub_network_port4_screen">
+      <UniqueIdentifier>561D4B10-AD1C-60E6-1937-E32F3AC18A92</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\sub_network_port4_screen">
+      <UniqueIdentifier>4CBF8D24-AC40-8D62-9BD3-C93754FDDAD1</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\generated\gui_generated\sub_network_wlan_screen">
+      <UniqueIdentifier>D139B62F-40F4-C572-6E7B-F95DA35F2943</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\generated\gui_generated\sub_network_wlan_screen">
+      <UniqueIdentifier>CB263CEE-BD0F-1A82-75FA-8AA0DD444A3F</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(TouchGFXReleasePath)\framework\source\platform\driver\touch\SDL2TouchController.cpp">
@@ -326,6 +446,96 @@
     </ClCompile>
     <ClCompile Include="..\..\generated\gui_generated\src\sub_information_screen\sub_InformationViewBase.cpp">
       <Filter>Source Files\generated\gui_generated\sub_information_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\sub_busload_can_screen\sub_Busload_CANPresenter.cpp">
+      <Filter>Source Files\gui\sub_busload_can_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\sub_busload_can_screen\sub_Busload_CANView.cpp">
+      <Filter>Source Files\gui\sub_busload_can_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\sub_busload_can_screen\sub_Busload_CANViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\sub_busload_can_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\sub_busload_eth_screen\sub_Busload_ETHPresenter.cpp">
+      <Filter>Source Files\gui\sub_busload_eth_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\sub_busload_eth_screen\sub_Busload_ETHView.cpp">
+      <Filter>Source Files\gui\sub_busload_eth_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\sub_busload_eth_screen\sub_Busload_ETHViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\sub_busload_eth_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\sub_busload_flexray_screen\sub_Busload_FlexrayPresenter.cpp">
+      <Filter>Source Files\gui\sub_busload_flexray_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\sub_busload_flexray_screen\sub_Busload_FlexrayView.cpp">
+      <Filter>Source Files\gui\sub_busload_flexray_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\sub_busload_flexray_screen\sub_Busload_FlexrayViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\sub_busload_flexray_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\sub_busload_lin_screen\sub_Busload_LINPresenter.cpp">
+      <Filter>Source Files\gui\sub_busload_lin_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\sub_busload_lin_screen\sub_Busload_LINView.cpp">
+      <Filter>Source Files\gui\sub_busload_lin_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\sub_busload_lin_screen\sub_Busload_LINViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\sub_busload_lin_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\sub_busload_uart_screen\sub_Busload_UARTPresenter.cpp">
+      <Filter>Source Files\gui\sub_busload_uart_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\sub_busload_uart_screen\sub_Busload_UARTView.cpp">
+      <Filter>Source Files\gui\sub_busload_uart_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\sub_busload_uart_screen\sub_Busload_UARTViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\sub_busload_uart_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\sub_network_port1_screen\sub_Network_Port1Presenter.cpp">
+      <Filter>Source Files\gui\sub_network_port1_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\sub_network_port1_screen\sub_Network_Port1View.cpp">
+      <Filter>Source Files\gui\sub_network_port1_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\sub_network_port1_screen\sub_Network_Port1ViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\sub_network_port1_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\sub_network_port2_screen\sub_Network_Port2Presenter.cpp">
+      <Filter>Source Files\gui\sub_network_port2_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\sub_network_port2_screen\sub_Network_Port2View.cpp">
+      <Filter>Source Files\gui\sub_network_port2_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\sub_network_port2_screen\sub_Network_Port2ViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\sub_network_port2_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\sub_network_port3_screen\sub_Network_Port3Presenter.cpp">
+      <Filter>Source Files\gui\sub_network_port3_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\sub_network_port3_screen\sub_Network_Port3View.cpp">
+      <Filter>Source Files\gui\sub_network_port3_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\sub_network_port3_screen\sub_Network_Port3ViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\sub_network_port3_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\sub_network_port4_screen\sub_Network_Port4Presenter.cpp">
+      <Filter>Source Files\gui\sub_network_port4_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\sub_network_port4_screen\sub_Network_Port4View.cpp">
+      <Filter>Source Files\gui\sub_network_port4_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\sub_network_port4_screen\sub_Network_Port4ViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\sub_network_port4_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\sub_network_wlan_screen\sub_Network_WLANPresenter.cpp">
+      <Filter>Source Files\gui\sub_network_wlan_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\gui\src\sub_network_wlan_screen\sub_Network_WLANView.cpp">
+      <Filter>Source Files\gui\sub_network_wlan_screen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\generated\gui_generated\src\sub_network_wlan_screen\sub_Network_WLANViewBase.cpp">
+      <Filter>Source Files\generated\gui_generated\sub_network_wlan_screen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -819,6 +1029,96 @@
     </ClInclude>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\sub_information_screen\sub_InformationViewBase.hpp">
       <Filter>Header Files\generated\gui_generated\sub_information_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\sub_busload_can_screen\sub_Busload_CANPresenter.hpp">
+      <Filter>Header Files\gui\sub_busload_can_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\sub_busload_can_screen\sub_Busload_CANView.hpp">
+      <Filter>Header Files\gui\sub_busload_can_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\sub_busload_can_screen\sub_Busload_CANViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\sub_busload_can_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\sub_busload_eth_screen\sub_Busload_ETHPresenter.hpp">
+      <Filter>Header Files\gui\sub_busload_eth_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\sub_busload_eth_screen\sub_Busload_ETHView.hpp">
+      <Filter>Header Files\gui\sub_busload_eth_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\sub_busload_eth_screen\sub_Busload_ETHViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\sub_busload_eth_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\sub_busload_flexray_screen\sub_Busload_FlexrayPresenter.hpp">
+      <Filter>Header Files\gui\sub_busload_flexray_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\sub_busload_flexray_screen\sub_Busload_FlexrayView.hpp">
+      <Filter>Header Files\gui\sub_busload_flexray_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\sub_busload_flexray_screen\sub_Busload_FlexrayViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\sub_busload_flexray_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\sub_busload_lin_screen\sub_Busload_LINPresenter.hpp">
+      <Filter>Header Files\gui\sub_busload_lin_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\sub_busload_lin_screen\sub_Busload_LINView.hpp">
+      <Filter>Header Files\gui\sub_busload_lin_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\sub_busload_lin_screen\sub_Busload_LINViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\sub_busload_lin_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\sub_busload_uart_screen\sub_Busload_UARTPresenter.hpp">
+      <Filter>Header Files\gui\sub_busload_uart_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\sub_busload_uart_screen\sub_Busload_UARTView.hpp">
+      <Filter>Header Files\gui\sub_busload_uart_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\sub_busload_uart_screen\sub_Busload_UARTViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\sub_busload_uart_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\sub_network_port1_screen\sub_Network_Port1Presenter.hpp">
+      <Filter>Header Files\gui\sub_network_port1_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\sub_network_port1_screen\sub_Network_Port1View.hpp">
+      <Filter>Header Files\gui\sub_network_port1_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\sub_network_port1_screen\sub_Network_Port1ViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\sub_network_port1_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\sub_network_port2_screen\sub_Network_Port2Presenter.hpp">
+      <Filter>Header Files\gui\sub_network_port2_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\sub_network_port2_screen\sub_Network_Port2View.hpp">
+      <Filter>Header Files\gui\sub_network_port2_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\sub_network_port2_screen\sub_Network_Port2ViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\sub_network_port2_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\sub_network_port3_screen\sub_Network_Port3Presenter.hpp">
+      <Filter>Header Files\gui\sub_network_port3_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\sub_network_port3_screen\sub_Network_Port3View.hpp">
+      <Filter>Header Files\gui\sub_network_port3_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\sub_network_port3_screen\sub_Network_Port3ViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\sub_network_port3_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\sub_network_port4_screen\sub_Network_Port4Presenter.hpp">
+      <Filter>Header Files\gui\sub_network_port4_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\sub_network_port4_screen\sub_Network_Port4View.hpp">
+      <Filter>Header Files\gui\sub_network_port4_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\sub_network_port4_screen\sub_Network_Port4ViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\sub_network_port4_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\sub_network_wlan_screen\sub_Network_WLANPresenter.hpp">
+      <Filter>Header Files\gui\sub_network_wlan_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\gui\include\gui\sub_network_wlan_screen\sub_Network_WLANView.hpp">
+      <Filter>Header Files\gui\sub_network_wlan_screen</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\sub_network_wlan_screen\sub_Network_WLANViewBase.hpp">
+      <Filter>Header Files\generated\gui_generated\sub_network_wlan_screen</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

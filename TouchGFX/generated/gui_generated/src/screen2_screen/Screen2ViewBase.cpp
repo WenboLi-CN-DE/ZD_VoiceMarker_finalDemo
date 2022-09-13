@@ -20,7 +20,7 @@ Screen2ViewBase::Screen2ViewBase() :
     box1.setColor(touchgfx::Color::getColorFromRGB(222, 222, 222));
     box1.setAlpha(0);
 
-    textArea1.setXY(105, 47);
+    textArea1.setXY(100, 47);
     textArea1.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     textArea1.setLinespacing(0);
     Unicode::snprintf(textArea1Buffer, TEXTAREA1_SIZE, "%s", touchgfx::TypedText(T___SINGLEUSE_S6TU).getText());

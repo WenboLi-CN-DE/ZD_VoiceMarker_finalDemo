@@ -17,8 +17,11 @@ public:
 
     virtual void changeToStartScreen()
     {
-        gotoScreen1ScreenNoTransition();
+        gotoMainBoardScreenNoTransition();
     }
+
+    // MainBoard
+    void gotoMainBoardScreenNoTransition();
 
     // Screen1
     void gotoScreen1ScreenNoTransition();
@@ -28,19 +31,49 @@ public:
     // Screen2
     void gotoScreen2ScreenNoTransition();
 
-    // MainBoard
-    void gotoMainBoardScreenNoTransition();
-
     // MarkerHistory
     void gotoMarkerHistoryScreenNoTransition();
 
     // sub_Information
     void gotosub_InformationScreenNoTransition();
 
+    // sub_Busload_CAN
+    void gotosub_Busload_CANScreenNoTransition();
+
+    // sub_Busload_LIN
+    void gotosub_Busload_LINScreenNoTransition();
+
+    // sub_Busload_UART
+    void gotosub_Busload_UARTScreenNoTransition();
+
+    // sub_Busload_Flexray
+    void gotosub_Busload_FlexrayScreenNoTransition();
+
+    // sub_Busload_ETH
+    void gotosub_Busload_ETHScreenNoTransition();
+
+    // sub_Network_Port1
+    void gotosub_Network_Port1ScreenNoTransition();
+
+    // sub_Network_Port2
+    void gotosub_Network_Port2ScreenNoTransition();
+
+    // sub_Network_Port3
+    void gotosub_Network_Port3ScreenNoTransition();
+
+    // sub_Network_Port4
+    void gotosub_Network_Port4ScreenNoTransition();
+
+    // sub_Network_WLAN
+    void gotosub_Network_WLANScreenNoTransition();
+
 protected:
     touchgfx::Callback<FrontendApplicationBase> transitionCallback;
     FrontendHeap& frontendHeap;
     Model& model;
+
+    // MainBoard
+    void gotoMainBoardScreenNoTransitionImpl();
 
     // Screen1
     void gotoScreen1ScreenNoTransitionImpl();
@@ -50,14 +83,41 @@ protected:
     // Screen2
     void gotoScreen2ScreenNoTransitionImpl();
 
-    // MainBoard
-    void gotoMainBoardScreenNoTransitionImpl();
-
     // MarkerHistory
     void gotoMarkerHistoryScreenNoTransitionImpl();
 
     // sub_Information
     void gotosub_InformationScreenNoTransitionImpl();
+
+    // sub_Busload_CAN
+    void gotosub_Busload_CANScreenNoTransitionImpl();
+
+    // sub_Busload_LIN
+    void gotosub_Busload_LINScreenNoTransitionImpl();
+
+    // sub_Busload_UART
+    void gotosub_Busload_UARTScreenNoTransitionImpl();
+
+    // sub_Busload_Flexray
+    void gotosub_Busload_FlexrayScreenNoTransitionImpl();
+
+    // sub_Busload_ETH
+    void gotosub_Busload_ETHScreenNoTransitionImpl();
+
+    // sub_Network_Port1
+    void gotosub_Network_Port1ScreenNoTransitionImpl();
+
+    // sub_Network_Port2
+    void gotosub_Network_Port2ScreenNoTransitionImpl();
+
+    // sub_Network_Port3
+    void gotosub_Network_Port3ScreenNoTransitionImpl();
+
+    // sub_Network_Port4
+    void gotosub_Network_Port4ScreenNoTransitionImpl();
+
+    // sub_Network_WLAN
+    void gotosub_Network_WLANScreenNoTransitionImpl();
 };
 
 #endif // FRONTENDAPPLICATIONBASE_HPP

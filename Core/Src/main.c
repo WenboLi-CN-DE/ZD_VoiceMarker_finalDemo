@@ -78,9 +78,10 @@ SlaacContext slaacContext;
 HttpClientContext httpClientContext;
 FtpClientContext ftpClientContext;
 
-error_t httpClientTest(char* uri_request);
+error_t httpClientTest(char* method, char* uri_request);
 
 char_t buffer_http[128]; //used to receive HTTP packets
+char buffer_trans[8196];
 uint8_t flag = 0;//key flag
 /* USER CODE END PTD */
 
@@ -200,6 +201,12 @@ const osMessageQueueAttr_t cJsonQueue_attributes = {
 osMessageQueueId_t fileNameQueueHandle;
 const osMessageQueueAttr_t fileNameQueue_attributes = {
   .name = "fileNameQueue"
+};
+
+/* Definitions for CANQueue */
+osMessageQueueId_t CANQueueHandle;
+const osMessageQueueAttr_t CANQueue_attributes = {
+  .name = "CANQueue"
 };
 /* USER CODE BEGIN PV */
 FATFS RAMFatFs;    /* File system objects logical drives */
@@ -497,12 +504,14 @@ int main(void)
 
   /* Create the queue(s) */
   /* creation of cJsonQueue */
-  cJsonQueueHandle = osMessageQueueNew (16, sizeof(uint16_t), &cJsonQueue_attributes);
+  cJsonQueueHandle = osMessageQueueNew (16, sizeof(char)*20*6, &cJsonQueue_attributes);
 
   /* creation of fileNameQueue */
   fileNameQueueHandle = osMessageQueueNew (16, sizeof(uint16_t), &fileNameQueue_attributes);
 
   /* USER CODE BEGIN RTOS_QUEUES */
+	CANQueueHandle = osMessageQueueNew (16, sizeof(char), &CANQueue_attributes);
+	
   /* add queues, ... */
   /* USER CODE END RTOS_QUEUES */
 
@@ -1979,7 +1988,7 @@ static uint8_t BSP_QSPI_EnableMemoryMappedMode(QSPI_HandleTypeDef *hqspi)
   return QSPI_OK;
 }
 
-error_t httpClientTest(char* uri_request)
+error_t httpClientTest(char* method, char* uri_request)
 {
 	error_t error;
 	size_t length;
@@ -2029,7 +2038,7 @@ error_t httpClientTest(char* uri_request)
 		}
 		//Create an HTTP request 
 		httpClientCreateRequest(&httpClientContext);
-		httpClientSetMethod(&httpClientContext, "GET");
+		httpClientSetMethod(&httpClientContext, method);
 		httpClientSetUri(&httpClientContext, uri_request);
 
 		//Add HTTP header fields
@@ -2076,10 +2085,11 @@ error_t httpClientTest(char* uri_request)
 			 //Debug message
 			 TRACE_INFO("Content-Type header field not found!\r\n");
 		}
-
+		memset(buffer_trans,0,sizeof(buffer_trans));
 		//Receive HTTP response body
 		while(!error)
 		{
+
 			 //Read data
 			 error = httpClientReadBody(&httpClientContext, buffer,
 					sizeof(buffer)-1, &length, 0);
@@ -2087,13 +2097,23 @@ error_t httpClientTest(char* uri_request)
 			 if(!error)
 			 {
 					//Properly terminate the string with a NULL character
+					
 					buffer[length] = '\0';
 					//Dump HTTP response body
 					TRACE_INFO("%s", buffer);
 					strcpy(buffer_http, buffer);// copy the buffer content to the http buffer
-					cpuInfoParser();					 
-			 }
+					strcat(buffer_trans,buffer_http);
+			 }		
+		 
 		}
+		if(strcmp(uri_request,"/api/dashboard/usage")==0)
+			cpuInfoParser();
+		else if(strcmp(uri_request,"/api/dashboard/portdata") ==0)
+			TRACE_INFO("%s", buffer);
+		else if(strcmp(uri_request,"/api/filemanager/mark") ==0)
+		{
+			triggerParser();
+		}	
 		//Terminate the HTTP response body with a CRLF
 		TRACE_INFO("\r\n");
 		//Any error to report?
@@ -2194,7 +2214,7 @@ error_t ftpGetFile()
 		if(error)
 			 break;
 		
-		f_open(&WavFile, "Wave1.wav", FA_CREATE_ALWAYS | FA_WRITE);
+		f_open(&WavFile, REC_WAVE_NAME, FA_CREATE_ALWAYS | FA_WRITE);
 		//Read the contents of the file
 		while(1)
 		{
@@ -2288,7 +2308,7 @@ error_t ftpPutFile()
 		//Any error to report?
 		if(error)
 			 break;
-		f_open(&WavFile, "Wave1.wav",FA_READ);
+		f_open(&WavFile, REC_WAVE_NAME,FA_READ);
 		//Open the specified file for writting
 		error = ftpClientOpenFile(&ftpClientContext, "WaveP.wav",
 			 FTP_FILE_MODE_WRITE | FTP_FILE_MODE_BINARY);
@@ -2408,13 +2428,17 @@ void StarttftpTask(void *argument)
       //User button pressed?
       if(!User_PB_GetState(USER_BUTTON_S1))
       {
-				httpClientTest("/api/dashboard/usage");
          //Wait for the user button to be released
 				while(!User_PB_GetState(USER_BUTTON_S1));
+//				httpClientTest("POST","/api/filemanager/mark");// post MarkerInfo and parser responser
+				httpClientTest("GET","/api/dashboard/usage");
       }
-
+		osDelay(100);
+//		httpClientTest("/api/dashboard/usage");
+//		httpClientTest("GET","/api/dashboard/portdata");
+//		httpClientTest("POST","/api/filemanager/mark");// post MarkerInfo and parser responser
       //Loop delay
-    osDelay(10);
+//    osDelay(10);
   }
   /* USER CODE END StarttftpTask */
 }
@@ -2512,9 +2536,14 @@ void ftpTaskfun(void *argument)
 				 //FTP client test routine
          ftpPutFile();
       }
+			if(!User_PB_GetState(USER_BUTTON_S3))
+      {
+         //Wait for the user button to be released
+         while(!User_PB_GetState(USER_BUTTON_S3));
+				 //FTP client test routine
+         ftpGetFile();
+      }
 			
-
-
       //Loop delay
       osDelayTask(100);
    }

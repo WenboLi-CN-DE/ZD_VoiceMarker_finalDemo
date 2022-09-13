@@ -6,11 +6,18 @@
 #include "JsonParser.h"
 #include "time.h"
 
+/* Definitions for cJsonQueue */
+osMessageQueueId_t triggerQueueHandle;
+const osMessageQueueAttr_t triggerQueue_attributes = {
+  .name = "triggerQueue"
+};
+
 extern char_t buffer_http[128]; 
+extern char buffer_trans[8196];
 extern osMessageQueueId_t cJsonQueueHandle;
 extern osMessageQueueId_t fileNameQueueHandle;
 extern void change();
-
+char triggerbuffer[20];
 
 void cpuInfoParser()
 {
@@ -51,6 +58,32 @@ void cpuInfoParser()
 	osMessageQueuePut(cJsonQueueHandle,&msg,0U,0);
 }
 
+void CANParser()
+{
+	cJSON *json, *json_can1, *json_can2, *json_can3, *json_can4, *json_can5, *json_can6,
+	*json_can7,*json_can8,*json_can9,*json_can10,*json_can11,*json_can12,
+	*json_can13,*json_can14,*json_can15,*json_can16,*json_can17,*json_can18; 
+	
+	json = cJSON_Parse(buffer_http);
+	json_can1 = cJSON_GetObjectItem(json, "cpu");
+	TRACE_INFO("\r\n can1:%s", json_can1->valuestring);	
+	
+
+}
+
+
+void triggerParser()
+{
+	cJSON *json, *json_marker, *json_timestamp; 
+	json = cJSON_Parse(buffer_trans);
+	int ArrLen = cJSON_GetArraySize(json);
+	TRACE_INFO("\r\n lenth:%d",ArrLen);
+	json_timestamp = cJSON_GetArrayItem(json, ArrLen-1);
+	json_marker = cJSON_GetObjectItem(json_timestamp, "timestamp");
+	TRACE_INFO("\r\n timestamp:%.0f",json_marker->valuedouble);
+	snprintf(triggerbuffer,20, "%.0f",json_marker->valuedouble);
+	cJSON_Delete(json); //release cJson(necessary)
+}
 
 
 

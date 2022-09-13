@@ -1,5 +1,5 @@
 stm32f769i_disco\bsp_driver_sdram.o: ../FATFS/Target/bsp_driver_sdram.c
-stm32f769i_disco\bsp_driver_sdram.o: ../FATFS/Target/bsp_driver_sdram.h
+stm32f769i_disco\bsp_driver_sdram.o: ../Drivers/BSP/STM32F769I-Discovery/stm32f769i_discovery_sdram.h
 stm32f769i_disco\bsp_driver_sdram.o: ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal.h
 stm32f769i_disco\bsp_driver_sdram.o: ../Core/Inc/stm32f7xx_hal_conf.h
 stm32f769i_disco\bsp_driver_sdram.o: ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal_rcc.h

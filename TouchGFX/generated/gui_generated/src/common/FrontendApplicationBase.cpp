@@ -9,16 +9,36 @@
 #include <touchgfx/Texts.hpp>
 #include <touchgfx/hal/HAL.hpp>
 #include <platform/driver/lcd/LCD16bpp.hpp>
+#include <gui/mainboard_screen/MainBoardView.hpp>
+#include <gui/mainboard_screen/MainBoardPresenter.hpp>
 #include <gui/screen1_screen/Screen1View.hpp>
 #include <gui/screen1_screen/Screen1Presenter.hpp>
 #include <gui/screen2_screen/Screen2View.hpp>
 #include <gui/screen2_screen/Screen2Presenter.hpp>
-#include <gui/mainboard_screen/MainBoardView.hpp>
-#include <gui/mainboard_screen/MainBoardPresenter.hpp>
 #include <gui/markerhistory_screen/MarkerHistoryView.hpp>
 #include <gui/markerhistory_screen/MarkerHistoryPresenter.hpp>
 #include <gui/sub_information_screen/sub_InformationView.hpp>
 #include <gui/sub_information_screen/sub_InformationPresenter.hpp>
+#include <gui/sub_busload_can_screen/sub_Busload_CANView.hpp>
+#include <gui/sub_busload_can_screen/sub_Busload_CANPresenter.hpp>
+#include <gui/sub_busload_lin_screen/sub_Busload_LINView.hpp>
+#include <gui/sub_busload_lin_screen/sub_Busload_LINPresenter.hpp>
+#include <gui/sub_busload_uart_screen/sub_Busload_UARTView.hpp>
+#include <gui/sub_busload_uart_screen/sub_Busload_UARTPresenter.hpp>
+#include <gui/sub_busload_flexray_screen/sub_Busload_FlexrayView.hpp>
+#include <gui/sub_busload_flexray_screen/sub_Busload_FlexrayPresenter.hpp>
+#include <gui/sub_busload_eth_screen/sub_Busload_ETHView.hpp>
+#include <gui/sub_busload_eth_screen/sub_Busload_ETHPresenter.hpp>
+#include <gui/sub_network_port1_screen/sub_Network_Port1View.hpp>
+#include <gui/sub_network_port1_screen/sub_Network_Port1Presenter.hpp>
+#include <gui/sub_network_port2_screen/sub_Network_Port2View.hpp>
+#include <gui/sub_network_port2_screen/sub_Network_Port2Presenter.hpp>
+#include <gui/sub_network_port3_screen/sub_Network_Port3View.hpp>
+#include <gui/sub_network_port3_screen/sub_Network_Port3Presenter.hpp>
+#include <gui/sub_network_port4_screen/sub_Network_Port4View.hpp>
+#include <gui/sub_network_port4_screen/sub_Network_Port4Presenter.hpp>
+#include <gui/sub_network_wlan_screen/sub_Network_WLANView.hpp>
+#include <gui/sub_network_wlan_screen/sub_Network_WLANPresenter.hpp>
 
 using namespace touchgfx;
 
@@ -36,6 +56,19 @@ FrontendApplicationBase::FrontendApplicationBase(Model& m, FrontendHeap& heap)
 /*
  * Screen Transition Declarations
  */
+
+// MainBoard
+
+void FrontendApplicationBase::gotoMainBoardScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoMainBoardScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotoMainBoardScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<MainBoardView, MainBoardPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
 
 // Screen1
 
@@ -74,19 +107,6 @@ void FrontendApplicationBase::gotoScreen2ScreenNoTransitionImpl()
     touchgfx::makeTransition<Screen2View, Screen2Presenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }
 
-// MainBoard
-
-void FrontendApplicationBase::gotoMainBoardScreenNoTransition()
-{
-    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotoMainBoardScreenNoTransitionImpl);
-    pendingScreenTransitionCallback = &transitionCallback;
-}
-
-void FrontendApplicationBase::gotoMainBoardScreenNoTransitionImpl()
-{
-    touchgfx::makeTransition<MainBoardView, MainBoardPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
-}
-
 // MarkerHistory
 
 void FrontendApplicationBase::gotoMarkerHistoryScreenNoTransition()
@@ -111,4 +131,134 @@ void FrontendApplicationBase::gotosub_InformationScreenNoTransition()
 void FrontendApplicationBase::gotosub_InformationScreenNoTransitionImpl()
 {
     touchgfx::makeTransition<sub_InformationView, sub_InformationPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// sub_Busload_CAN
+
+void FrontendApplicationBase::gotosub_Busload_CANScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotosub_Busload_CANScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotosub_Busload_CANScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<sub_Busload_CANView, sub_Busload_CANPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// sub_Busload_LIN
+
+void FrontendApplicationBase::gotosub_Busload_LINScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotosub_Busload_LINScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotosub_Busload_LINScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<sub_Busload_LINView, sub_Busload_LINPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// sub_Busload_UART
+
+void FrontendApplicationBase::gotosub_Busload_UARTScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotosub_Busload_UARTScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotosub_Busload_UARTScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<sub_Busload_UARTView, sub_Busload_UARTPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// sub_Busload_Flexray
+
+void FrontendApplicationBase::gotosub_Busload_FlexrayScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotosub_Busload_FlexrayScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotosub_Busload_FlexrayScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<sub_Busload_FlexrayView, sub_Busload_FlexrayPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// sub_Busload_ETH
+
+void FrontendApplicationBase::gotosub_Busload_ETHScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotosub_Busload_ETHScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotosub_Busload_ETHScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<sub_Busload_ETHView, sub_Busload_ETHPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// sub_Network_Port1
+
+void FrontendApplicationBase::gotosub_Network_Port1ScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotosub_Network_Port1ScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotosub_Network_Port1ScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<sub_Network_Port1View, sub_Network_Port1Presenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// sub_Network_Port2
+
+void FrontendApplicationBase::gotosub_Network_Port2ScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotosub_Network_Port2ScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotosub_Network_Port2ScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<sub_Network_Port2View, sub_Network_Port2Presenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// sub_Network_Port3
+
+void FrontendApplicationBase::gotosub_Network_Port3ScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotosub_Network_Port3ScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotosub_Network_Port3ScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<sub_Network_Port3View, sub_Network_Port3Presenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// sub_Network_Port4
+
+void FrontendApplicationBase::gotosub_Network_Port4ScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotosub_Network_Port4ScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotosub_Network_Port4ScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<sub_Network_Port4View, sub_Network_Port4Presenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// sub_Network_WLAN
+
+void FrontendApplicationBase::gotosub_Network_WLANScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplication::gotosub_Network_WLANScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotosub_Network_WLANScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<sub_Network_WLANView, sub_Network_WLANPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }

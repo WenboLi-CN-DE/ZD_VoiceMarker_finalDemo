@@ -7,7 +7,6 @@ class Model
 {
 public:
     Model();
-
     void bind(ModelListener* listener)
     {
         modelListener = listener;
@@ -43,6 +42,7 @@ public:
 protected:
     ModelListener* modelListener;
 		char diskload_model[6][20];
+
 };
 
 #endif // MODEL_HPP

@@ -11,6 +11,7 @@ extern "C"
 	extern osMessageQueueId_t cJsonQueueHandle; 
 	extern osMessageQueueId_t cJsonCPU_Queue_1_Handle;
 	extern osMessageQueueId_t fileNameQueueHandle;
+
 }
 Model::Model() : modelListener(0), diskload_model()
 {
@@ -37,7 +38,7 @@ void Model::tick()
 			modelListener-> zoneChanged();
 		}
 		
-		osMessageQueueGet(fileNameQueueHandle, &file_name, 0U, 0);
+//		osMessageQueueGet(fileNameQueueHandle, &file_name, 0U, 0);
 
 }
 

@@ -15,6 +15,7 @@ MarkerHistoryViewBase::MarkerHistoryViewBase() :
 
     image1.setXY(0, 0);
     image1.setBitmap(touchgfx::Bitmap(BITMAP_E_1156000_300B6C29_ID));
+    image1.setAlpha(100);
 
     button1.setXY(0, 0);
     button1.setBitmaps(touchgfx::Bitmap(BITMAP_IC_ACTION_ARROW_LEFT_LIGHT_ID), touchgfx::Bitmap(BITMAP_IC_ACTION_ARROW_LEFT_ID));
@@ -44,6 +45,9 @@ MarkerHistoryViewBase::MarkerHistoryViewBase() :
     textArea2.setXY(90, 15);
     textArea2.setColor(touchgfx::Color::getColorFromRGB(214, 214, 214));
     textArea2.setLinespacing(0);
+    textArea2Buffer[0] = 0;
+    textArea2.setWildcard(textArea2Buffer);
+    textArea2.resizeToCurrentText();
     textArea2.setTypedText(touchgfx::TypedText(T___SINGLEUSE_JLBO));
     TriggerScrollableContainer.add(textArea2);
 

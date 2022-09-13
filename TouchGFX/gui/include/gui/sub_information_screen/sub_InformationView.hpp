@@ -11,6 +11,12 @@ public:
     virtual ~sub_InformationView() {}
     virtual void setupScreen();
     virtual void tearDownScreen();
+		void displayCPU(char* Info);
+		void displayDisk(char* Info);
+		void displayDiskLoad(char* Info);
+		void displayMem(char* Info);
+		void displayTime(char* Info);
+		void displayZone(char* Info);
 protected:
 };
 

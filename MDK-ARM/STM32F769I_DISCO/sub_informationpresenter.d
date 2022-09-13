@@ -49,9 +49,9 @@ stm32f769i_disco\sub_informationpresenter.o: ../touchgfx/gui/include/gui/model/M
 stm32f769i_disco\sub_informationpresenter.o: ../middlewares/st/touchgfx/framework/include/touchgfx/widgets/Box.hpp
 stm32f769i_disco\sub_informationpresenter.o: ../middlewares/st/touchgfx/framework/include/touchgfx/widgets/Widget.hpp
 stm32f769i_disco\sub_informationpresenter.o: ../middlewares/st/touchgfx/framework/include/touchgfx/widgets/Image.hpp
+stm32f769i_disco\sub_informationpresenter.o: ../middlewares/st/touchgfx/framework/include/touchgfx/widgets/TextAreaWithWildcard.hpp
 stm32f769i_disco\sub_informationpresenter.o: ../middlewares/st/touchgfx/framework/include/touchgfx/widgets/TextArea.hpp
 stm32f769i_disco\sub_informationpresenter.o: ../middlewares/st/touchgfx/framework/include/touchgfx/TypedText.hpp
 stm32f769i_disco\sub_informationpresenter.o: ../middlewares/st/touchgfx/framework/include/touchgfx/Texts.hpp
-stm32f769i_disco\sub_informationpresenter.o: ../middlewares/st/touchgfx/framework/include/touchgfx/widgets/TextAreaWithWildcard.hpp
 stm32f769i_disco\sub_informationpresenter.o: ../middlewares/st/touchgfx/framework/include/touchgfx/widgets/Button.hpp
 stm32f769i_disco\sub_informationpresenter.o: ../middlewares/st/touchgfx/framework/include/touchgfx/widgets/AbstractButton.hpp

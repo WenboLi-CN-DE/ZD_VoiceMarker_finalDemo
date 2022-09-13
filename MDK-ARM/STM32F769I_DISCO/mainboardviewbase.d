@@ -69,6 +69,9 @@ stm32f769i_disco\mainboardviewbase.o: ../middlewares/st/touchgfx/framework/inclu
 stm32f769i_disco\mainboardviewbase.o: ../middlewares/st/touchgfx/framework/include/touchgfx/Texts.hpp
 stm32f769i_disco\mainboardviewbase.o: ../middlewares/st/touchgfx/framework/include/touchgfx/widgets/Button.hpp
 stm32f769i_disco\mainboardviewbase.o: ../middlewares/st/touchgfx/framework/include/touchgfx/widgets/AbstractButton.hpp
+stm32f769i_disco\mainboardviewbase.o: ../middlewares/st/touchgfx/framework/include/touchgfx/widgets/TextAreaWithWildcard.hpp
+stm32f769i_disco\mainboardviewbase.o: ../middlewares/st/touchgfx/framework/include/touchgfx/EasingEquations.hpp
+stm32f769i_disco\mainboardviewbase.o: ../middlewares/st/touchgfx/framework/include/touchgfx/mixins/FadeAnimator.hpp
 stm32f769i_disco\mainboardviewbase.o: ../middlewares/st/touchgfx/framework/include/touchgfx/Color.hpp
 stm32f769i_disco\mainboardviewbase.o: ../touchgfx/generated/images/include/BitmapDatabase.hpp
 stm32f769i_disco\mainboardviewbase.o: ../touchgfx/generated/texts/include/texts/TextKeysAndLanguages.hpp

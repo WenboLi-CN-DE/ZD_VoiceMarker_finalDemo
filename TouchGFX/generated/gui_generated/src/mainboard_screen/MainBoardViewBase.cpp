@@ -19,6 +19,7 @@ MainBoardViewBase::MainBoardViewBase() :
 
     image1.setXY(0, 0);
     image1.setBitmap(touchgfx::Bitmap(BITMAP_E_1156000_300B6C29_ID));
+    image1.setAlpha(100);
 
     scalableImage1.setBitmap(touchgfx::Bitmap(BITMAP_LOGO_ID));
     scalableImage1.setPosition(0, 0, 205, 66);
@@ -31,6 +32,10 @@ MainBoardViewBase::MainBoardViewBase() :
     line1.setEnd(1000, 0);
     line1.setLineWidth(5);
     line1.setLineEndingStyle(touchgfx::Line::SQUARE_CAP_ENDING);
+
+    box1.setPosition(207, 8, 476, 51);
+    box1.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    box1.setAlpha(0);
 
     textWorkingState.setXY(25, 125);
     textWorkingState.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
@@ -68,6 +73,7 @@ MainBoardViewBase::MainBoardViewBase() :
 
     buttonBus.setXY(476, 125);
     buttonBus.setBitmaps(touchgfx::Bitmap(BITMAP_IC_ACTION_LINE_CHART_ID), touchgfx::Bitmap(BITMAP_IC_ACTION_LINE_CHART_ID));
+    buttonBus.setAction(buttonCallback);
 
     buttonFile.setXY(642, 126);
     buttonFile.setBitmaps(touchgfx::Bitmap(BITMAP_IC_ACTION_CAR_ID), touchgfx::Bitmap(BITMAP_IC_ACTION_CAR_ID));
@@ -75,6 +81,7 @@ MainBoardViewBase::MainBoardViewBase() :
 
     buttonNetwork.setXY(304, 255);
     buttonNetwork.setBitmaps(touchgfx::Bitmap(BITMAP_IC_ACTION_GLOBE_ID), touchgfx::Bitmap(BITMAP_IC_ACTION_GLOBE_ID));
+    buttonNetwork.setAction(buttonCallback);
 
     buttonSetting.setXY(476, 255);
     buttonSetting.setBitmaps(touchgfx::Bitmap(BITMAP_IC_ACTION_GEAR_ID), touchgfx::Bitmap(BITMAP_IC_ACTION_GEAR_ID));
@@ -112,10 +119,19 @@ MainBoardViewBase::MainBoardViewBase() :
     textCamera.setLinespacing(0);
     textCamera.setTypedText(touchgfx::TypedText(T___SINGLEUSE_D2BQ));
 
+    textTriggerInfo.setXY(418, 22);
+    textTriggerInfo.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    textTriggerInfo.setLinespacing(0);
+    textTriggerInfoBuffer[0] = 0;
+    textTriggerInfo.setWildcard(textTriggerInfoBuffer);
+    textTriggerInfo.resizeToCurrentText();
+    textTriggerInfo.setTypedText(touchgfx::TypedText(T___SINGLEUSE_0PJO));
+
     add(__background);
     add(image1);
     add(scalableImage1);
     add(line1);
+    add(box1);
     add(textWorkingState);
     add(textArea1_1);
     add(textArea1_2);
@@ -134,6 +150,7 @@ MainBoardViewBase::MainBoardViewBase() :
     add(textNetwork);
     add(textSetting);
     add(textCamera);
+    add(textTriggerInfo);
 }
 
 void MainBoardViewBase::setupScreen()
@@ -150,11 +167,30 @@ void MainBoardViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& sr
         //Go to sub_Information with no screen transition
         application().gotosub_InformationScreenNoTransition();
     }
+    else if (&src == &buttonBus)
+    {
+        //Interaction3
+        //When buttonBus clicked change screen to sub_Busload_CAN
+        //Go to sub_Busload_CAN with no screen transition
+        application().gotosub_Busload_CANScreenNoTransition();
+    }
     else if (&src == &buttonFile)
     {
         //buttonFile_screenChangen
         //When buttonFile clicked change screen to MarkerHistory
         //Go to MarkerHistory with no screen transition
         application().gotoMarkerHistoryScreenNoTransition();
+
+        //Interaction4
+        //When buttonFile clicked change screen to Screen1
+        //Go to Screen1 with no screen transition
+        application().gotoScreen1ScreenNoTransition();
+    }
+    else if (&src == &buttonNetwork)
+    {
+        //Interaction5
+        //When buttonNetwork clicked change screen to sub_Network_Port1
+        //Go to sub_Network_Port1 with no screen transition
+        application().gotosub_Network_Port1ScreenNoTransition();
     }
 }

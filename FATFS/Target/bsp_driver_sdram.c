@@ -30,7 +30,7 @@
 #else
 
 /* Includes ------------------------------------------------------------------*/
-#include "bsp_driver_sdram.h"
+#include "stm32f769i_discovery_sdram.h"
 
 /* Extern variables ----------------------------------------------------------*/
 extern SDRAM_HandleTypeDef hsdram1;

@@ -70,3 +70,6 @@ stm32f769i_disco\mainboardpresenter.o: ../middlewares/st/touchgfx/framework/incl
 stm32f769i_disco\mainboardpresenter.o: ../middlewares/st/touchgfx/framework/include/touchgfx/Texts.hpp
 stm32f769i_disco\mainboardpresenter.o: ../middlewares/st/touchgfx/framework/include/touchgfx/widgets/Button.hpp
 stm32f769i_disco\mainboardpresenter.o: ../middlewares/st/touchgfx/framework/include/touchgfx/widgets/AbstractButton.hpp
+stm32f769i_disco\mainboardpresenter.o: ../middlewares/st/touchgfx/framework/include/touchgfx/widgets/TextAreaWithWildcard.hpp
+stm32f769i_disco\mainboardpresenter.o: ../middlewares/st/touchgfx/framework/include/touchgfx/EasingEquations.hpp
+stm32f769i_disco\mainboardpresenter.o: ../middlewares/st/touchgfx/framework/include/touchgfx/mixins/FadeAnimator.hpp
