@@ -1,7 +1,7 @@
 #include <gui/mainboard_screen/MainBoardView.hpp>
 #include "main.h"
-
-extern char triggerbuffer[20];
+#include "cmsis_os.h"
+//extern char triggerbuffer[20];
 
 MainBoardView::MainBoardView()
 {
@@ -18,12 +18,13 @@ void MainBoardView::tearDownScreen()
     MainBoardViewBase::tearDownScreen();
 }
 
-void MainBoardView::handleTickEvent()
+void MainBoardView::displayTrigger(char* Info)
 {
+		textTriggerInfo.setAlpha(255);
 	//The only variable that needs to be changed is the textArea buffer(e.g. textArea1Buffer, textArea1)
 		char buffer[50] ;
 	// Convert const char to Unicode
-		sprintf(buffer,"%s",triggerbuffer);
+		sprintf(buffer,"%s",Info);
 		Unicode::UnicodeChar buffer_Unicode[50];
 		Unicode::strncpy(buffer_Unicode, buffer, 50);	
 	// Print the information to the screen
@@ -31,5 +32,8 @@ void MainBoardView::handleTickEvent()
 		textTriggerInfo.resizeToCurrentText();
 	// release
 		textTriggerInfo.invalidateContent();
-		box1.invalidate();
+		textTriggerInfo.setAlpha(100);
+		box1.invalidate();	
 }	
+
+

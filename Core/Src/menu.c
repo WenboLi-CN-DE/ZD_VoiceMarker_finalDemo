@@ -29,7 +29,7 @@
 /* Private variables ---------------------------------------------------------*/
 AUDIO_DEMO_StateMachine     AudioDemo;
 AUDIO_PLAYBACK_StateTypeDef AudioState;
-
+uint8_t RecordFlag; 
 /* Private function prototypes -----------------------------------------------*/
 static void AUDIO_ChangeSelectMode(AUDIO_DEMO_SelectMode select_mode);
 
@@ -56,12 +56,7 @@ void AUDIO_MenuProcess(void)
       break;    
       
     case AUDIO_DEMO_WAIT:      
-//			BSP_LED_Off(LED2);
-//			HAL_Delay(500);
 			BSP_LED_On(LED2);
-//			HAL_Delay(500);
-//			BSP_LED_Off(LED2);
-
       break;
       
     case AUDIO_DEMO_EXPLORE: 
@@ -119,7 +114,6 @@ void AUDIO_MenuProcess(void)
         AudioDemo.state = AUDIO_DEMO_WAIT;
       }
       break; 
- /*------------------------------------------------------------录音功能----------------------------------------------------------------*/     
     case AUDIO_DEMO_IN:
       if(appli_state == APPLICATION_READY)
       {
@@ -127,7 +121,7 @@ void AUDIO_MenuProcess(void)
         {
           /* Start Playing */
           AudioState = AUDIO_STATE_INIT;               
-          /* Init storage 选择SDRAM为存储介质 */
+          /* Init storage */
           AUDIO_StorageInit();          
           /* Configure the audio recorder: sampling frequency, bits-depth, number of channels */
           if(AUDIO_REC_Start() == AUDIO_ERROR_IO)
@@ -138,10 +132,14 @@ void AUDIO_MenuProcess(void)
         }
         else /* Not idle */
         {
+					if(RecordFlag)// trigger Recording start
+					{
+						AudioState = AUDIO_STATE_RECORD;// start recording
+						RecordFlag = 0;
+					}						
           status = AUDIO_REC_Process();
           if((status == AUDIO_ERROR_IO) || (status == AUDIO_ERROR_EOF))
-          {
-            
+          {            
             AUDIO_ChangeSelectMode(AUDIO_SELECT_MENU);  
             AudioDemo.state = AUDIO_DEMO_IDLE;
           }

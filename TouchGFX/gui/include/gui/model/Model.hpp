@@ -38,10 +38,15 @@ public:
 		{
 			return diskload_model[5];
 		}
+		char* getTriggerValue()
+		{
+			return trigger_model;
+		}
 	
 protected:
     ModelListener* modelListener;
 		char diskload_model[6][20];
+		char trigger_model[20];
 
 };
 

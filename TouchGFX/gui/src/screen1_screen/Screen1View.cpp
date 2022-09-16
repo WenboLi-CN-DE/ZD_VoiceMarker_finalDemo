@@ -7,7 +7,7 @@ extern AUDIO_DEMO_StateMachine     AudioDemo;
 extern uint32_t elapsed_time;
 extern int FileSize_Recorder;
 extern uint32_t uwVolume_tmp;
-
+extern uint8_t RecordFlag; 
 Screen1View::Screen1View()
 {
 	number = 0;
@@ -42,13 +42,7 @@ void Screen1View::handleTickEvent()
 
 void Screen1View::function1()
 {
-//	BSP_LED_Toggle(LED1);
-//	Unicode::snprintf(textArea3Buffer, 20 , "%d" , ++number );
-//	box1.invalidate();//Tell the framework that this entire Drawable needs to be redrawn.
-//	textArea3.resizeToCurrentText();
-//	textArea3.invalidate();
 		AudioState = AUDIO_STATE_RECORD;
-//		++number;
 }
 
 
@@ -64,10 +58,11 @@ void Screen1View::functionPause()
 	AudioState = AUDIO_STATE_PAUSE;
 }
 
-void Screen1View::functionRecordStart()
-{
+void Screen1View::functionRecordStart()// the first refresh
+{	
 	AudioDemo.state = AUDIO_DEMO_IN;
 	BSP_LED_Toggle(LED2);
+	RecordFlag = 1;
 }
 
 void Screen1View::functionStop()

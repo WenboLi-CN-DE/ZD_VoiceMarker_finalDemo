@@ -81,8 +81,9 @@ FtpClientContext ftpClientContext;
 error_t httpClientTest(char* method, char* uri_request);
 
 char_t buffer_http[128]; //used to receive HTTP packets
-char buffer_trans[8196];
+char buffer_trans[8196*2];
 uint8_t flag = 0;//key flag
+char *r;
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -116,7 +117,10 @@ uint8_t flag = 0;//key flag
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
 extern struct netif gnetif; //ftp test
-
+extern AUDIO_DEMO_StateMachine   AudioDemo;
+extern uint8_t RecordFlag; 
+uint8_t HttpRequestFlag;
+uint8_t WaitFlag;
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
@@ -149,7 +153,7 @@ SDRAM_HandleTypeDef hsdram1;
 osThreadId_t defaultTaskHandle;
 const osThreadAttr_t defaultTask_attributes = {
   .name = "defaultTask",
-  .stack_size = 2048 * 4,
+  .stack_size = 1024 * 4,
   .priority = (osPriority_t) osPriorityNormal,
 };
 /* Definitions for TouchGFXTask */
@@ -163,7 +167,7 @@ const osThreadAttr_t TouchGFXTask_attributes = {
 osThreadId_t videoTaskHandle;
 const osThreadAttr_t videoTask_attributes = {
   .name = "videoTask",
-  .stack_size = 1000 * 4,
+  .stack_size = 512 * 4,
   .priority = (osPriority_t) osPriorityLow,
 };
 /* Definitions for tftpTask */
@@ -182,8 +186,8 @@ const osThreadAttr_t tftpTask_attributes = {
 osThreadId_t TriggerTaskHandle;
 const osThreadAttr_t TriggerTask_attributes = {
   .name = "TriggerTask",
-  .stack_size = 512 * 4,
-  .priority = (osPriority_t) osPriorityNormal,
+  .stack_size = 1024 * 4,
+  .priority = (osPriority_t) osPriorityHigh,
 };
 /* Definitions for ftpTask */
 osThreadId_t ftpTaskHandle;
@@ -258,6 +262,7 @@ extern void tcpecho_init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+/* Definitions for InfoRefreshTask */
 
 /* USER CODE END 0 */
 
@@ -536,7 +541,8 @@ int main(void)
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
-	
+	/* creation of ftpTask */
+
   /* USER CODE END RTOS_THREADS */
 
   /* USER CODE BEGIN RTOS_EVENTS */
@@ -2087,32 +2093,37 @@ error_t httpClientTest(char* method, char* uri_request)
 		}
 		memset(buffer_trans,0,sizeof(buffer_trans));
 		//Receive HTTP response body
+//		int32_t i = 0;
+		r =(char*)pvPortMalloc(12000);
 		while(!error)
 		{
-
 			 //Read data
 			 error = httpClientReadBody(&httpClientContext, buffer,
 					sizeof(buffer)-1, &length, 0);
 			 //Check status code
 			 if(!error)
 			 {
-					//Properly terminate the string with a NULL character
-					
+					//Properly terminate the string with a NULL character		
 					buffer[length] = '\0';
 					//Dump HTTP response body
-					TRACE_INFO("%s", buffer);
+					TRACE_INFO("%s", buffer);				
 					strcpy(buffer_http, buffer);// copy the buffer content to the http buffer
-					strcat(buffer_trans,buffer_http);
-			 }		
-		 
+					strcat(r,buffer_http);
+			 }				 
 		}
+		
 		if(strcmp(uri_request,"/api/dashboard/usage")==0)
+		{
 			cpuInfoParser();
+			vPortFree(r);
+		}
+
 		else if(strcmp(uri_request,"/api/dashboard/portdata") ==0)
 			TRACE_INFO("%s", buffer);
 		else if(strcmp(uri_request,"/api/filemanager/mark") ==0)
 		{
 			triggerParser();
+			vPortFree(r);
 		}	
 		//Terminate the HTTP response body with a CRLF
 		TRACE_INFO("\r\n");
@@ -2136,7 +2147,7 @@ error_t httpClientTest(char* method, char* uri_request)
 	} while(0);
 	//Release HTTP client context
 	httpClientDeinit(&httpClientContext);
-
+	HttpRequestFlag = 1;
 	//Return status code
 	return error;
 
@@ -2424,21 +2435,18 @@ void StarttftpTask(void *argument)
 					ipv6GetGlobalAddr(interface, 0, &ipv6Addr);
 		//      printf("%-40s\r\n", ipv6AddrToString(&ipv6Addr, buffer));
 		#endif
-
-      //User button pressed?
-      if(!User_PB_GetState(USER_BUTTON_S1))
-      {
-         //Wait for the user button to be released
-				while(!User_PB_GetState(USER_BUTTON_S1));
-//				httpClientTest("POST","/api/filemanager/mark");// post MarkerInfo and parser responser
-				httpClientTest("GET","/api/dashboard/usage");
-      }
-		osDelay(100);
-//		httpClientTest("/api/dashboard/usage");
+			httpClientTest("GET","/api/dashboard/usage");
+			osDelay(300);
 //		httpClientTest("GET","/api/dashboard/portdata");
 //		httpClientTest("POST","/api/filemanager/mark");// post MarkerInfo and parser responser
       //Loop delay
 //    osDelay(10);
+			if(WaitFlag && HttpRequestFlag)
+			{
+				httpClientTest("POST","/api/filemanager/mark");// post MarkerInfo and parser responser
+				WaitFlag = 0;
+				HttpRequestFlag = 0;
+			}
   }
   /* USER CODE END StarttftpTask */
 }
@@ -2453,17 +2461,25 @@ void StarttftpTask(void *argument)
 void TriggerTaskfun(void *argument)
 {
   /* USER CODE BEGIN TriggerTaskfun */
-	
-	int button_value;
   /* Infinite loop */
   for(;;)
   {
-		if(!User_PB_GetState(USER_BUTTON_S1))
+		if(!User_PB_GetState(USER_BUTTON_S1))//down 
 		{
-			while(!User_PB_GetState(USER_BUTTON_S1));
-			User_LED_On(USER_LED_GREEN);
-			User_LED_Off(USER_LED_RED);
-			User_LED_Off(USER_LED_BLUE);
+			osDelay(800);
+			if(User_PB_GetState(USER_BUTTON_S1))//up
+			{
+				User_LED_On(USER_LED_GREEN);
+				User_LED_Off(USER_LED_RED);
+				User_LED_Off(USER_LED_BLUE);
+				WaitFlag = 1;
+				AudioState = AUDIO_STATE_STOP;	
+			}
+			else //down
+			{
+				AudioDemo.state = AUDIO_DEMO_IN;
+				RecordFlag = 1;
+			}											
 		}
 		if(!User_PB_GetState(USER_BUTTON_S2))
 		{

@@ -22,7 +22,7 @@ Dialog DLL:      TCM.DLL V1.48.0.0
  
 <h2>Project:</h2>
 C:\Users\wenbo.li\Desktop\test_version\MDK-ARM\STM32F769I_DISCO.uvprojx
-Project File Date:  09/13/2022
+Project File Date:  09/15/2022
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
@@ -38,23 +38,21 @@ compiling main.c...
   #endif /* __MAIN_H */
 ../Core/Inc/User_Button_LED.h(81): warning:  #1-D: last line of file ends without a newline
   #endif 
-../Core/Src/main.c(273): warning:  #177-D: variable "taskId"  was declared but never referenced
+../Core/Src/main.c(278): warning:  #177-D: variable "taskId"  was declared but never referenced
   	OsTaskId taskId;
-../Core/Src/main.c(2154): warning:  #177-D: variable "bufferSameFlag"  was declared but never referenced
+../Core/Src/main.c(2165): warning:  #177-D: variable "bufferSameFlag"  was declared but never referenced
   	uint8_t bufferSameFlag = 0;
-../Core/Src/main.c(2158): warning:  #177-D: variable "msg_file"  was declared but never referenced
+../Core/Src/main.c(2169): warning:  #177-D: variable "msg_file"  was declared but never referenced
   	MSGQUEUE_OBJ_t msg_file;
-../Core/Src/main.c(2457): warning:  #177-D: variable "button_value"  was declared but never referenced
-  	int button_value;
-../Core/Src/main.c(2550): warning:  #111-D: statement is unreachable
+../Core/Src/main.c(2566): warning:  #111-D: statement is unreachable
       osDelay(1);
-../Core/Src/main.c: 9 warnings, 0 errors
+../Core/Src/main.c: 8 warnings, 0 errors
 linking...
 STM32F769I_DISCO.sct(16): warning: L6314W: No section matches pattern *.o(TouchGFX_Framebuffer).
-Program Size: Code=332006 RO-data=9479750 RW-data=15292 ZI-data=1217812  
+Program Size: Code=332326 RO-data=9479858 RW-data=15304 ZI-data=1275144  
 Finished: 0 information, 1 warning and 0 error messages.
 FromELF: creating hex file...
-"STM32F769I_DISCO\STM32F769I_DISCO.axf" - 0 Error(s), 10 Warning(s).
+"STM32F769I_DISCO\STM32F769I_DISCO.axf" - 0 Error(s), 9 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -77,7 +75,7 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.5.0
-Build Time Elapsed:  00:00:24
+Build Time Elapsed:  00:00:16
 </pre>
 </body>
 </html>

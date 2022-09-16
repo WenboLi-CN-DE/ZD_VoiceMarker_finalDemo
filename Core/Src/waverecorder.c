@@ -119,19 +119,11 @@ AUDIO_ErrorTypeDef AUDIO_REC_Process(void)
   
   switch(AudioState)
   {
-  case AUDIO_STATE_PRERECORD:
-
-// AudioState = AUDIO_STATE_STOP;
-
-// AudioState = AUDIO_STATE_RECORD;
-
-// AudioState = AUDIO_STATE_PRERECORD;
-
+  case AUDIO_STATE_PRERECORD:// do nothing 
     break;
-  case AUDIO_STATE_RECORD:
-
-    BSP_LED_On(LED1);
 	
+  case AUDIO_STATE_RECORD:
+    BSP_LED_On(LED1);
     /* MAX Recording time reached, so stop audio interface and close file */
     if(BufferCtl.fptr >= REC_SAMPLE_LENGTH)
     {
@@ -210,7 +202,7 @@ AUDIO_ErrorTypeDef AUDIO_REC_Process(void)
     AudioState = AUDIO_STATE_RECORD;
     break;
     
-  case AUDIO_STATE_WAIT://等待触摸
+  case AUDIO_STATE_WAIT://wait for touching
     break;
 
   case AUDIO_STATE_IDLE:

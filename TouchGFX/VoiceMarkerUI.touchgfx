@@ -402,11 +402,11 @@
           {
             "Type": "Button",
             "Name": "button1",
-            "X": 138,
-            "Y": 139,
+            "X": 603,
+            "Y": 324,
             "Width": 60,
             "Height": 60,
-            "LockPosition": true,
+            "Visible": false,
             "Pressed": "__designer\\Dark_Buttons_Round_icon_button_pressed.png",
             "Released": "__designer\\Blue_Buttons_Round_icon_button.png"
           },
@@ -458,11 +458,10 @@
           {
             "Type": "ButtonWithIcon",
             "Name": "buttonRecordStart",
-            "X": 555,
-            "Y": 252,
+            "X": 146,
+            "Y": 139,
             "Width": 60,
             "Height": 60,
-            "LockPosition": true,
             "Pressed": "__designer\\Blue_Buttons_Round_icon_button_pressed.png",
             "Released": "__designer\\Blue_Buttons_Round_icon_button.png",
             "IconPressed": "__designer\\Blue_Icons_Refresh_32.png",

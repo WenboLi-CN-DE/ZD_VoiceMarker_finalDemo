@@ -132,3 +132,14 @@ stm32f769i_disco\mainboardview.o: ../Middlewares/Third_Party/FatFs/src/ff_gen_dr
 stm32f769i_disco\mainboardview.o: ../Middlewares/Third_Party/FatFs/src/diskio.h
 stm32f769i_disco\mainboardview.o: ../Core/Inc/sdram_diskio.h
 stm32f769i_disco\mainboardview.o: ../Drivers/BSP/STM32F769I-Discovery/stm32f769i_discovery_sdram.h
+stm32f769i_disco\mainboardview.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h
+stm32f769i_disco\mainboardview.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
+stm32f769i_disco\mainboardview.o: ../Core/Inc/FreeRTOSConfig.h
+stm32f769i_disco\mainboardview.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
+stm32f769i_disco\mainboardview.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
+stm32f769i_disco\mainboardview.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h
+stm32f769i_disco\mainboardview.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM7/r0p1/portmacro.h
+stm32f769i_disco\mainboardview.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h
+stm32f769i_disco\mainboardview.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h
+stm32f769i_disco\mainboardview.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h
+stm32f769i_disco\mainboardview.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h

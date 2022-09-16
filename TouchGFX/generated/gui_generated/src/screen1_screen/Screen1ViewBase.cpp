@@ -18,7 +18,8 @@ Screen1ViewBase::Screen1ViewBase() :
     image1.setBitmap(touchgfx::Bitmap(BITMAP_E_1156000_300B6C29_ID));
     image1.setAlpha(100);
 
-    button1.setXY(138, 139);
+    button1.setXY(603, 324);
+    button1.setVisible(false);
     button1.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_DARK_BUTTONS_ROUND_ICON_BUTTON_PRESSED_ID));
     button1.setAction(buttonCallback);
 
@@ -36,7 +37,7 @@ Screen1ViewBase::Screen1ViewBase() :
     buttonPlay.setIconXY(20, 15);
     buttonPlay.setAction(buttonCallback);
 
-    buttonRecordStart.setXY(555, 252);
+    buttonRecordStart.setXY(146, 139);
     buttonRecordStart.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_ICON_BUTTON_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_ICON_BUTTON_PRESSED_ID), touchgfx::Bitmap(BITMAP_BLUE_ICONS_REFRESH_32_ID), touchgfx::Bitmap(BITMAP_BLUE_ICONS_REFRESH_32_ID));
     buttonRecordStart.setIconXY(15, 16);
     buttonRecordStart.setAction(buttonCallback);

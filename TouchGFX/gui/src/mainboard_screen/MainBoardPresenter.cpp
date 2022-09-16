@@ -17,4 +17,9 @@ void MainBoardPresenter::deactivate()
 
 }
 
+void MainBoardPresenter::triggerInfoChanged()
+{
+	view.displayTrigger(model->getTriggerValue());
+}
+
 

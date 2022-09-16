@@ -26,8 +26,10 @@ public:
     virtual void deactivate();
 
     virtual ~MainBoardPresenter() {};
+		virtual void triggerInfoChanged();
 private:
     MainBoardPresenter();
+
 
     MainBoardView& view;
 };

@@ -13,18 +13,18 @@ const osMessageQueueAttr_t triggerQueue_attributes = {
 };
 
 extern char_t buffer_http[128]; 
-extern char buffer_trans[8196];
+extern char buffer_trans[8196*2];
+extern char *r;
 extern osMessageQueueId_t cJsonQueueHandle;
 extern osMessageQueueId_t fileNameQueueHandle;
 extern void change();
-char triggerbuffer[20];
 
 void cpuInfoParser()
 {
 	cJSON *json, *json_1, *json_2, *json_3, *json_4, *json_5, *json_6; 
 	MSGQUEUE_OBJ_t msg;
 	
-	json = cJSON_Parse(buffer_http);
+	json = cJSON_Parse(r);
 	json_1 = cJSON_GetObjectItem(json, "cpu");
 	json_2 = cJSON_GetObjectItem(json, "disk");
 	json_3 = cJSON_GetObjectItem(json, "diskload");
@@ -63,26 +63,28 @@ void CANParser()
 	cJSON *json, *json_can1, *json_can2, *json_can3, *json_can4, *json_can5, *json_can6,
 	*json_can7,*json_can8,*json_can9,*json_can10,*json_can11,*json_can12,
 	*json_can13,*json_can14,*json_can15,*json_can16,*json_can17,*json_can18; 
-	
 	json = cJSON_Parse(buffer_http);
 	json_can1 = cJSON_GetObjectItem(json, "cpu");
 	TRACE_INFO("\r\n can1:%s", json_can1->valuestring);	
-	
-
 }
 
 
 void triggerParser()
 {
 	cJSON *json, *json_marker, *json_timestamp; 
-	json = cJSON_Parse(buffer_trans);
+	MSGQUEUE_OBJ_t msg_trigger;
+	triggerQueueHandle = osMessageQueueNew (16, sizeof(char)*20, &triggerQueue_attributes);
+
+	json = cJSON_Parse(r);
 	int ArrLen = cJSON_GetArraySize(json);
 	TRACE_INFO("\r\n lenth:%d",ArrLen);
 	json_timestamp = cJSON_GetArrayItem(json, ArrLen-1);
 	json_marker = cJSON_GetObjectItem(json_timestamp, "timestamp");
 	TRACE_INFO("\r\n timestamp:%.0f",json_marker->valuedouble);
-	snprintf(triggerbuffer,20, "%.0f",json_marker->valuedouble);
+	snprintf(msg_trigger.Buf[0],20,"%.0f",json_marker->valuedouble);
 	cJSON_Delete(json); //release cJson(necessary)
+	osMessageQueuePut(triggerQueueHandle,&msg_trigger,0U,0);	
+
 }
 
 
