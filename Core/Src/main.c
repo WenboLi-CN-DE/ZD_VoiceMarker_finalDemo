@@ -60,9 +60,9 @@ typedef StaticTask_t osStaticThreadDef_t;
 #define APP_IPV6_SECONDARY_DNS "2001:4860:4860::8844"
 
 //Application configuration
-#define APP_HTTP_SERVER_NAME "192.168.1.145" //datalogger server地址
-#define APP_HTTP_URI "/api/dashboard/usage"
-#define APP_HTTP_SERVER_PORT 8180 //
+#define APP_HTTP_SERVER_NAME "192.168.1.145" //datalogger server address
+#define APP_HTTP_URI "/api/dashboard/usage" //get cpu info
+#define APP_HTTP_SERVER_PORT 8180 
 
 //Application configuration
 #define APP_FTP_SERVER_NAME "192.168.1.145"

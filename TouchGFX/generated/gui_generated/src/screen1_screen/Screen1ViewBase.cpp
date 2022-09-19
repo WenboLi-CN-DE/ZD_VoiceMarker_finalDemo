@@ -78,6 +78,7 @@ Screen1ViewBase::Screen1ViewBase() :
     slider1.setNewValueCallback(sliderValueChangedCallback);
 
     toggleButton1.setXY(555, 422);
+    toggleButton1.setVisible(false);
     toggleButton1.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_SMALL_BUTTON_OFF_ID), touchgfx::Bitmap(BITMAP_BLUE_TOGGLEBARS_TOGGLE_ROUND_SMALL_BUTTON_ON_ID));
     toggleButton1.setAction(buttonCallback);
 
@@ -98,6 +99,7 @@ Screen1ViewBase::Screen1ViewBase() :
     textAreaVolume.setTypedText(touchgfx::TypedText(T___SINGLEUSE_6ZTA));
 
     buttonWithIcon1.setXY(176, 392);
+    buttonWithIcon1.setVisible(false);
     buttonWithIcon1.setBitmaps(touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_LARGE_ID), touchgfx::Bitmap(BITMAP_BLUE_BUTTONS_ROUND_LARGE_PRESSED_ID), touchgfx::Bitmap(BITMAP_BLUE_ICONS_NEXT_ARROW_32_ID), touchgfx::Bitmap(BITMAP_BLUE_ICONS_NEXT_ARROW_32_ID));
     buttonWithIcon1.setIconXY(22, 15);
     buttonWithIcon1.setAction(buttonCallback);

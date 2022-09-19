@@ -47,6 +47,7 @@ static uint8_t PlayerInit(uint32_t AudioFreq);
   */
 AUDIO_ErrorTypeDef AUDIO_PLAYER_Init(void)
 {
+	uwVolume = uwVolume_tmp; 
   if(BSP_AUDIO_OUT_Init(OUTPUT_DEVICE_AUTO, uwVolume, I2S_AUDIOFREQ_48K) == 0)
   {
     return AUDIO_ERROR_NONE;
@@ -182,7 +183,7 @@ AUDIO_ErrorTypeDef AUDIO_PLAYER_Process(void)
     AUDIO_PLAYER_Start(FilePos);
     if(uwVolume == 0)
     {
-//			uwVolume = uwVolume_tmp;
+			uwVolume = uwVolume_tmp;
       BSP_AUDIO_OUT_SetVolume(uwVolume);
     }
     break;    
@@ -196,7 +197,7 @@ AUDIO_ErrorTypeDef AUDIO_PLAYER_Process(void)
     AUDIO_PLAYER_Start(FilePos);   
     if(uwVolume == 0)
     {
-//			uwVolume = uwVolume_tmp;
+			uwVolume = uwVolume_tmp;
       BSP_AUDIO_OUT_SetVolume(uwVolume);
     }
     break;   
@@ -210,7 +211,7 @@ AUDIO_ErrorTypeDef AUDIO_PLAYER_Process(void)
     BSP_AUDIO_OUT_Resume();
     if(uwVolume == 0)
     {
-//			uwVolume = uwVolume_tmp;
+			uwVolume = uwVolume_tmp;
       BSP_AUDIO_OUT_SetVolume(uwVolume);
     }
     AudioState = AUDIO_STATE_PLAY;

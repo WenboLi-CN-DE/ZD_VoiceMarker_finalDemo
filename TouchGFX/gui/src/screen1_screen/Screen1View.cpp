@@ -8,6 +8,7 @@ extern uint32_t elapsed_time;
 extern int FileSize_Recorder;
 extern uint32_t uwVolume_tmp;
 extern uint8_t RecordFlag; 
+
 Screen1View::Screen1View()
 {
 	number = 0;
@@ -15,12 +16,12 @@ Screen1View::Screen1View()
 
 void Screen1View::setupScreen()
 {
-    Screen1ViewBase::setupScreen();
+   Screen1ViewBase::setupScreen();
 }
 
 void Screen1View::tearDownScreen()
 {
-    Screen1ViewBase::tearDownScreen();
+   Screen1ViewBase::tearDownScreen();
 }
 
 void Screen1View::handleTickEvent()
@@ -42,15 +43,12 @@ void Screen1View::handleTickEvent()
 
 void Screen1View::function1()
 {
-		AudioState = AUDIO_STATE_RECORD;
+	AudioState = AUDIO_STATE_RECORD;
 }
-
-
 
 void Screen1View::functionPlay()
 {
 	AudioDemo.state = AUDIO_DEMO_PLAYBACK;
-
 }
 
 void Screen1View::functionPause()
@@ -69,8 +67,6 @@ void Screen1View::functionStop()
 {
 	AudioState = AUDIO_STATE_STOP;
 }
-
-
 
 void Screen1View::functionVolume(int value)
 {

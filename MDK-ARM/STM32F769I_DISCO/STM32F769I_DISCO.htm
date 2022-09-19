@@ -3,7 +3,7 @@
 <title>Static Call Graph - [STM32F769I_DISCO\STM32F769I_DISCO.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image STM32F769I_DISCO\STM32F769I_DISCO.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Thu Sep 15 17:56:10 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Fri Sep 16 10:12:08 2022
 <BR><P>
 <H3>Maximum Stack Usage =       2264 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -3249,7 +3249,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartDefaultTask
 </UL>
 
-<P><STRONG><a name="[3dc]"></a>AUDIO_PLAYER_Init</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, waveplayer.o(i.AUDIO_PLAYER_Init))
+<P><STRONG><a name="[3dc]"></a>AUDIO_PLAYER_Init</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, waveplayer.o(i.AUDIO_PLAYER_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 224<LI>Call Chain = AUDIO_PLAYER_Init &rArr; BSP_AUDIO_OUT_Init &rArr; BSP_AUDIO_OUT_ClockConfig &rArr; HAL_RCCEx_PeriphCLKConfig
 </UL>
 <BR>[Calls]<UL><LI><a href="#[3e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_AUDIO_OUT_Init
@@ -3257,7 +3257,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[3db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AUDIO_InitApplication
 </UL>
 
-<P><STRONG><a name="[3e2]"></a>AUDIO_PLAYER_Process</STRONG> (Thumb, 388 bytes, Stack size 16 bytes, waveplayer.o(i.AUDIO_PLAYER_Process))
+<P><STRONG><a name="[3e2]"></a>AUDIO_PLAYER_Process</STRONG> (Thumb, 406 bytes, Stack size 16 bytes, waveplayer.o(i.AUDIO_PLAYER_Process))
 <BR><BR>[Stack]<UL><LI>Max Depth = 464<LI>Call Chain = AUDIO_PLAYER_Process &rArr; AUDIO_PLAYER_Start &rArr; GetFileInfo &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[3e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_read
@@ -5915,7 +5915,7 @@ Global Symbols
 <P><STRONG><a name="[187]"></a>Screen1ViewBase::function1()</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, screen1viewbase.o(i._ZN15Screen1ViewBase9function1Ev))
 <BR>[Address Reference Count : 1]<UL><LI> screen1viewbase.o(.constdata__ZTV15Screen1ViewBase)
 </UL>
-<P><STRONG><a name="[545]"></a>Screen1ViewBase::Screen1ViewBase()</STRONG> (Thumb, 2500 bytes, Stack size 56 bytes, screen1viewbase.o(i._ZN15Screen1ViewBaseC1Ev))
+<P><STRONG><a name="[545]"></a>Screen1ViewBase::Screen1ViewBase()</STRONG> (Thumb, 2524 bytes, Stack size 56 bytes, screen1viewbase.o(i._ZN15Screen1ViewBaseC1Ev))
 <BR><BR>[Stack]<UL><LI>Max Depth = 344<LI>Call Chain = Screen1ViewBase::Screen1ViewBase() &rArr; touchgfx::Unicode::snprintf(unsigned short*, unsigned short, const char*, ...) &rArr; touchgfx::Unicode::vsnprintf(unsigned short*, unsigned short, const char*, std::__va_list) &rArr; touchgfx::Unicode::vsnprintf(unsigned short*, unsigned short, const unsigned short*, const char*, std::__va_list) &rArr; touchgfx::Unicode::itoa(int, unsigned short*, unsigned short, int) &rArr; touchgfx::Unicode::strncpy(unsigned short*, const char*, unsigned short)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[543]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;touchgfx::TextArea::resizeToCurrentText()
